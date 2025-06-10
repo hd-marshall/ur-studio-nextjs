@@ -1,9 +1,12 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Menu, X, Scissors, Moon, Sun } from "lucide-react"
+import { Menu, X, Moon, Sun } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useTheme } from "next-themes"
+import Image from "next/image"
+
+const logoImagePath = "/logo/logo-svg.svg"
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -40,13 +43,18 @@ export default function Header() {
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <button onClick={scrollToTop} className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
-            <div className="p-2 bg-black dark:bg-white rounded-full">
-              <Scissors className="h-6 w-6 text-white dark:text-black" />
+            <div className="flex items-center justify-center w-16 h-16 dark:bg-black rounded-full p-2">
+               <Image
+                src={logoImagePath}
+                alt="UR Studio Logo"
+                width={96}
+                height={96}
+                className="w-8 h-8 object-contain filter dark:invert"
+              />
             </div>
-            <div className="flex flex-col">
-              <span className="text-2xl font-light tracking-wider">PRECISION</span>
-              <span className="text-xs tracking-[0.2em] text-gray-600 dark:text-gray-400">BARBER STUDIO</span>
-            </div>
+            {/* <div className="flex flex-col">
+              <span className="text-2xl font-light tracking-wider">UR Studio</span>
+            </div> */}
           </button>
 
           {/* Desktop Navigation */}
