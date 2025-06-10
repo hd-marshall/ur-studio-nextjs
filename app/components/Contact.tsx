@@ -62,17 +62,6 @@ export default function Contact() {
                 </Card>
               ))}
             </div>
-
-            {/* Additional Info */}
-            <Card className="bg-gray-50 dark:bg-gray-900 border-gray-200 dark:border-gray-800">
-              <CardHeader>
-                <CardTitle className="text-black dark:text-white font-light tracking-wide">Walk-ins Welcome</CardTitle>
-                <CardDescription className="text-gray-700 dark:text-gray-300 font-light">
-                  While appointments are highly recommended for guaranteed service, we welcome walk-in clients subject
-                  to availability.
-                </CardDescription>
-              </CardHeader>
-            </Card>
           </div>
 
           {/* Map and Directions */}
@@ -103,32 +92,6 @@ export default function Contact() {
               </CardContent>
             </Card>
 
-            {/* Transport Information */}
-            <Card className="border-gray-200 dark:border-gray-800 bg-white dark:bg-black">
-              <CardHeader>
-                <CardTitle className="font-light tracking-wide">Getting Here</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex items-start gap-4">
-                  <div className="w-2 h-2 bg-black dark:bg-white rounded-full mt-2"></div>
-                  <div>
-                    <p className="font-light text-black dark:text-white mb-1">Public Transport</p>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm font-light">
-                      Flinders Street Station (5 min walk) • Collins Street Tram Stop (1 min walk)
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-2 h-2 bg-black dark:bg-white rounded-full mt-2"></div>
-                  <div>
-                    <p className="font-light text-black dark:text-white mb-1">Parking</p>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm font-light">
-                      Wilson Parking (2 blocks) • Street parking available • Valet service on request
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
           </div>
         </div>
       </div>

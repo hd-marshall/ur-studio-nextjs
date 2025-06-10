@@ -11,21 +11,21 @@ export default function About() {
 
   const barbers = [
     {
-      name: "Alexander Chen",
+      name: "Milo Le",
       title: "Founder & Master Barber",
       experience: "4 years",
       specialty: "Precision cuts & traditional techniques",
-      image: "/placeholder.svg?height=400&width=400",
+      image: "/images/about/milo-headshot.JPG",
       story:
-        "Started his journey at 19, Alex trained under master barbers in London before bringing his refined techniques to Melbourne.",
+        "Started his journey at 20, Milo trained under master barbers in London before bringing his refined techniques to Melbourne.",
     },
     {
-      name: "Marcus Thompson",
+      name: "Xian Ri",
       title: "Senior Barber",
       experience: "3 years",
       specialty: "Modern fades & beard sculpting",
-      image: "/placeholder.svg?height=400&width=400",
-      story: "A perfectionist by nature, Marcus combines contemporary techniques with classic barbering principles.",
+      image: "/images/about/xian-headshot.png",
+      story: "A perfectionist by nature, Xian combines contemporary techniques with classic barbering principles.",
     },
   ]
 
@@ -62,8 +62,8 @@ export default function About() {
           <div className="relative">
             <div className="aspect-[4/5] bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800 overflow-hidden">
               <img
-                src="/placeholder.svg?height=600&width=480"
-                alt="Precision Barber Studio interior"
+                src="/images/about/milo-compeition.jpg"
+                alt="Milo Nationals Comp"
                 className="w-full h-full object-cover"
               />
             </div>

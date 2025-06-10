@@ -19,10 +19,8 @@ export default function Header() {
 
   const navItems = [
     { name: "Services", href: "#services" },
-    { name: "Pricing", href: "#pricing" },
     { name: "Gallery", href: "#gallery" },
     { name: "About", href: "#about" },
-    { name: "Book Now", href: "#booking" },
     { name: "Contact", href: "#contact" },
   ]
 
@@ -43,13 +41,13 @@ export default function Header() {
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <button onClick={scrollToTop} className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
-            <div className="flex items-center justify-center w-16 h-16 dark:bg-black rounded-full p-2">
-               <Image
+            <div className="flex items-center justify-center dark:bg-black rounded-full w-16 h-16 p-2">
+              <Image
                 src={logoImagePath}
                 alt="UR Studio Logo"
-                width={96}
-                height={96}
-                className="w-8 h-8 object-contain filter dark:invert"
+                width={120}
+                height={120}
+                className="w-20 h-20 object-contain filter dark:invert"
               />
             </div>
             {/* <div className="flex flex-col">

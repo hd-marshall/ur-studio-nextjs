@@ -10,7 +10,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "Precision Barber Studio - Premium Men's Grooming | Melbourne CBD",
+  title: "UR Barbers - Professional Men's Barber | Melbourne CBD",
   description:
     "Experience Melbourne's finest men's grooming at Precision Barber Studio. Premium haircuts, traditional shaves, and beard sculpting in the heart of Melbourne CBD. Book your appointment today.",
   keywords:

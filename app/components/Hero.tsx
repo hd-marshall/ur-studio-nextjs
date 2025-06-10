@@ -14,7 +14,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="pt-20 min-h-screen flex items-center bg-gradient-to-br from-white to-gray-50 dark:from-black dark:to-gray-950"
+      className="min-h-screen flex items-center bg-gradient-to-br from-white to-gray-50 dark:from-black dark:to-gray-950"
     >
       <div className="container mx-auto px-6 py-20">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -30,7 +30,7 @@ export default function Hero() {
                   <span className="font-light">& PRECISION</span>
                 </h1>
               </div>
-              <p className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed font-light max-w-lg">
+              <p className="text-xl text-zinc-800 dark:text-gray-400 leading-relaxed font-light max-w-lg">
                 Where traditional barbering meets contemporary sophistication. Experience the art of precision cutting
                 in Melbourne's most refined setting.
               </p>
@@ -58,15 +58,15 @@ export default function Hero() {
           <div className="relative">
             <div className="aspect-[4/5] relative overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800">
               <img
-                src="/placeholder.svg?height=800&width=640"
+                src="/images/hero/hero.png"
                 alt="Master barber at work"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
             </div>
-            <div className="absolute -bottom-8 -left-8 bg-white dark:bg-black p-8 shadow-2xl">
+            <div className="absolute -bottom-8 -left-8 bg-white dark:bg-zinc-800 p-8 shadow-2xl">
               <div className="text-4xl font-extralight text-black dark:text-white">EST.</div>
-              <div className="text-4xl font-extralight text-black dark:text-white">2020</div>
+              <div className="text-4xl font-extralight text-black dark:text-white">2025</div>
               <div className="text-xs tracking-[0.2em] text-gray-600 dark:text-gray-400 mt-2">MELBOURNE</div>
             </div>
           </div>
