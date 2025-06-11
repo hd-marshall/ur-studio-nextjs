@@ -32,7 +32,7 @@ export default function About() {
                 TIMELESS CRAFT
               </h2>
             </div>
-            <div className="space-y-6 text-gray-700 dark:text-gray-300 leading-relaxed font-light" style={{ fontFamily: 'var(--font-body)' }}>
+            <div className="space-y-6 text-gray-700 dark:text-gray-300 leading-6 font-light" style={{ fontFamily: 'var(--font-body)' }}>
               <p>
                 Founded in 2020 by Alexander Chen at just 19 years old, Precision Barber Studio began as a vision to
                 bridge the gap between traditional barbering excellence and contemporary sophistication.
@@ -63,7 +63,7 @@ export default function About() {
         <div className="text-center mb-16">
           <p className="text-sm tracking-[0.3em] text-gray-600 dark:text-gray-400 font-light mb-4">MEET THE TEAM</p>
           <h2 className="text-5xl font-extralight text-black dark:text-white mb-6">MASTER CRAFTSMEN</h2>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-light leading-relaxed" style={{ fontFamily: 'var(--font-body)' }}>
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-light leading-6" style={{ fontFamily: 'var(--font-body)' }}>
             Our skilled professionals bring passion, precision, and years of dedicated training to every service.
           </p>
         </div>

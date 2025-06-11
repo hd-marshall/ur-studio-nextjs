@@ -39,7 +39,7 @@ export default function Services() {
         <div className="text-center mb-20">
           <p className="text-sm tracking-[0.3em] font-light mb-4" style={{ color: '#565656', fontFamily: 'var(--font-body)' }}>OUR SERVICES</p>
           <h2 className="text-5xl font-extralight mb-6" style={{ color: '#0C0C0C' }}>CRAFTED EXPERIENCES</h2>
-          <p className="text-xl max-w-2xl mx-auto font-light leading-relaxed" style={{ color: '#565656', fontFamily: 'var(--font-body)' }}>
+          <p className="text-xl max-w-2xl mx-auto font-light leading-6" style={{ color: '#565656', fontFamily: 'var(--font-body)' }}>
             Each service is meticulously designed to deliver an unparalleled grooming experience that exceeds
             expectations.
           </p>
