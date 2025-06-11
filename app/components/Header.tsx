@@ -11,10 +11,35 @@ const logoImagePath = "/logo/logo-svg.svg"
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
+  const [activeSection, setActiveSection] = useState("")
   const { theme, setTheme } = useTheme()
 
   useEffect(() => {
     setMounted(true)
+  }, [])
+
+  // Track active section based on scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ["services", "gallery", "about", "contact"]
+      const scrollPosition = window.scrollY + 100 // Offset for header
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = document.getElementById(sections[i])
+        if (section && scrollPosition >= section.offsetTop) {
+          setActiveSection(`#${sections[i]}`)
+          break
+        }
+      }
+
+      // If at top of page, clear active section
+      if (window.scrollY < 100) {
+        setActiveSection("")
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   const navItems = [
@@ -50,9 +75,6 @@ export default function Header() {
                 className="w-20 h-20 object-contain filter dark:invert"
               />
             </div>
-            {/* <div className="flex flex-col">
-              <span className="text-2xl font-light tracking-wider">UR Studio</span>
-            </div> */}
           </button>
 
           {/* Desktop Navigation */}
@@ -61,7 +83,16 @@ export default function Header() {
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className="text-sm tracking-wide text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors duration-300 font-light"
+                className={`
+                  relative text-sm tracking-wide transition-colors duration-300 font-light pb-1
+                  text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white
+                  after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-black dark:after:bg-white 
+                  after:transition-all after:duration-300 after:ease-in-out
+                  ${activeSection === item.href 
+                    ? 'after:w-full text-black dark:text-white' 
+                    : 'after:w-0 hover:after:w-full'
+                  }
+                `}
               >
                 {item.name.toUpperCase()}
               </button>
@@ -101,7 +132,13 @@ export default function Header() {
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="text-left text-sm tracking-wide text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors duration-300 font-light"
+                  className={`
+                    text-left text-sm tracking-wide transition-colors duration-300 font-light
+                    ${activeSection === item.href 
+                      ? 'text-black dark:text-white font-medium' 
+                      : 'text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white'
+                    }
+                  `}
                 >
                   {item.name.toUpperCase()}
                 </button>

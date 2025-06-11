@@ -26,73 +26,55 @@ export default function Contact() {
   ]
 
   return (
-    <section id="contact" className="py-24 bg-white dark:bg-black">
+    <section id="contact" className="pt-8 pb-8 bg-black">
       <div className="container mx-auto px-6">
         <div className="text-center mb-20">
-          <p className="text-sm tracking-[0.3em] text-gray-600 dark:text-gray-400 font-light mb-4">VISIT US</p>
-          <h2 className="text-5xl font-extralight text-black dark:text-white mb-6">MELBOURNE CBD</h2>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-light leading-relaxed">
+          <p className="text-sm tracking-[0.3em] text-[#666666] font-light mb-4">VISIT US</p>
+          <h2 className="text-5xl font-extralight text-white mb-6">MELBOURNE CBD</h2>
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto font-light leading-relaxed" style={{ fontFamily: 'var(--font-body)' }}>
             Located in the heart of Melbourne's business district, easily accessible by public transport and with
             convenient parking nearby.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16">
-          {/* Contact Information */}
-          <div className="space-y-8">
-            <div className="grid sm:grid-cols-2 gap-6">
-              {contactInfo.map((info, index) => (
-                <Card
-                  key={index}
-                  className="hover:shadow-xl transition-all duration-500 border-gray-200 dark:border-gray-800 bg-white dark:bg-black"
-                >
-                  <CardHeader className="pb-4">
-                    <div className="flex items-center gap-3">
-                      <div className="p-2 bg-gray-50 dark:bg-gray-900 rounded-full">{info.icon}</div>
-                      <CardTitle className="text-lg font-light tracking-wide">{info.title}</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    {info.details.map((detail, idx) => (
-                      <p key={idx} className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed font-light">
-                        {detail}
-                      </p>
-                    ))}
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-
-          {/* Map and Directions */}
-          <div className="space-y-8">
-            <Card className="overflow-hidden border-gray-200 dark:border-gray-800 bg-white dark:bg-black">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 font-light tracking-wide">
-                  <MapPin className="h-5 w-5" />
-                  Find Us
-                </CardTitle>
-                <CardDescription className="font-light">
-                  Conveniently located in Melbourne's CBD with excellent transport links.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="p-0">
-                <div className="aspect-video relative">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345093747!2d144.9537353153167!3d-37.81720997975171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d4c2b349649%3A0xb6899234e561db11!2sEnvato!5e0!3m2!1sen!2sau!4v1635749234567!5m2!1sen!2sau"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    className="absolute inset-0"
-                  ></iframe>
+        {/* Contact Information Cards */}
+        <div className="flex flex-col lg:flex-row gap-6 mb-16">
+          {contactInfo.map((info, index) => (
+            <Card
+              key={index}
+              className="flex-1 hover:shadow-xl transition-all duration-500 bg-white border-[#E0E0E0] rounded-2xl shadow-md"
+            >
+              <CardHeader className="pb-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-[#9C9C9C] rounded-full text-white">{info.icon}</div>
+                  <CardTitle className="text-lg font-normal tracking-wide text-[#2C2C2C]">{info.title}</CardTitle>
                 </div>
+              </CardHeader>
+              <CardContent>
+                {info.details.map((detail, idx) => (
+                  <p key={idx} className="text-[#666666] text-sm leading-relaxed font-light">
+                    {detail}
+                  </p>
+                ))}
               </CardContent>
             </Card>
+          ))}
+        </div>
+      </div>
 
-          </div>
+      {/* Full Width Map */}
+      <div className="w-full">
+        <div className="aspect-video relative">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345093747!2d144.9537353153167!3d-37.81720997975171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d4c2b349649%3A0xb6899234e561db11!2sEnvato!5e0!3m2!1sen!2sau!4v1635749234567!5m2!1sen!2sau"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="absolute inset-0"
+          ></iframe>
         </div>
       </div>
     </section>

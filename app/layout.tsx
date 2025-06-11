@@ -3,6 +3,13 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import { Providers } from "./providers"
+import localFont from 'next/font/local'
+
+const customFont = localFont({
+  src: '../public/fonts/Nitti-Normal.ttf',  // Changed from '/fonts/' to './fonts/'
+  variable: '--font-body',
+  display: 'swap',
+})
 
 const inter = Inter({
   subsets: ["latin"],
@@ -20,7 +27,7 @@ export const metadata: Metadata = {
     description: "Where traditional craftsmanship meets contemporary sophistication in Melbourne CBD.",
     type: "website",
   },
-    generator: 'v0.dev'
+  generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -29,7 +36,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+    <html lang="en" className={`scroll-smooth ${customFont.variable}`} suppressHydrationWarning>
       <body className={inter.className}>
         <Providers>{children}</Providers>
       </body>

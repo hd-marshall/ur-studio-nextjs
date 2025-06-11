@@ -1,14 +1,4 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Award, Users, Clock, Star } from "lucide-react"
-
 export default function About() {
-  const stats = [
-    { icon: <Award className="h-8 w-8" />, value: "4", label: "Years Crafting" },
-    { icon: <Users className="h-8 w-8" />, value: "2000+", label: "Satisfied Clients" },
-    { icon: <Clock className="h-8 w-8" />, value: "24/7", label: "Online Booking" },
-    { icon: <Star className="h-8 w-8" />, value: "5.0", label: "Average Rating" },
-  ]
-
   const barbers = [
     {
       name: "Milo Le",
@@ -16,8 +6,7 @@ export default function About() {
       experience: "4 years",
       specialty: "Precision cuts & traditional techniques",
       image: "/images/about/milo-headshot.JPG",
-      story:
-        "Started his journey at 20, Milo trained under master barbers in London before bringing his refined techniques to Melbourne.",
+      story: "",
     },
     {
       name: "Xian Ri",
@@ -25,7 +14,7 @@ export default function About() {
       experience: "3 years",
       specialty: "Modern fades & beard sculpting",
       image: "/images/about/xian-headshot.png",
-      story: "A perfectionist by nature, Xian combines contemporary techniques with classic barbering principles.",
+      story: "",
     },
   ]
 
@@ -43,7 +32,7 @@ export default function About() {
                 TIMELESS CRAFT
               </h2>
             </div>
-            <div className="space-y-6 text-gray-700 dark:text-gray-300 leading-relaxed font-light">
+            <div className="space-y-6 text-gray-700 dark:text-gray-300 leading-relaxed font-light" style={{ fontFamily: 'var(--font-body)' }}>
               <p>
                 Founded in 2020 by Alexander Chen at just 19 years old, Precision Barber Studio began as a vision to
                 bridge the gap between traditional barbering excellence and contemporary sophistication.
@@ -70,50 +59,33 @@ export default function About() {
           </div>
         </div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-24">
-          {stats.map((stat, index) => (
-            <div key={index} className="text-center group">
-              <div className="mx-auto mb-6 p-4 bg-gray-50 dark:bg-gray-900 rounded-full w-fit group-hover:bg-black group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-colors duration-300">
-                {stat.icon}
-              </div>
-              <div className="text-4xl font-extralight text-black dark:text-white mb-2">{stat.value}</div>
-              <div className="text-sm tracking-wide text-gray-600 dark:text-gray-400 font-light">{stat.label}</div>
-            </div>
-          ))}
-        </div>
-
         {/* Team */}
         <div className="text-center mb-16">
           <p className="text-sm tracking-[0.3em] text-gray-600 dark:text-gray-400 font-light mb-4">MEET THE TEAM</p>
-          <h3 className="text-4xl font-extralight text-black dark:text-white mb-6">MASTER CRAFTSMEN</h3>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-light leading-relaxed">
+          <h2 className="text-5xl font-extralight text-black dark:text-white mb-6">MASTER CRAFTSMEN</h2>
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-light leading-relaxed" style={{ fontFamily: 'var(--font-body)' }}>
             Our skilled professionals bring passion, precision, and years of dedicated training to every service.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-20 max-w-5xl mx-auto">
           {barbers.map((barber, index) => (
-            <Card
+            <div
               key={index}
-              className="text-center hover:shadow-2xl transition-all duration-500 border-gray-200 dark:border-gray-800 bg-white dark:bg-black"
+              className="text-center hover:shadow-2xl transition-all duration-500 border border-gray-200 dark:border-gray-800 bg-white dark:bg-black rounded-lg overflow-hidden"
             >
-              <CardHeader className="pb-8">
-                <div className="mx-auto mb-8">
-                  <div className="w-48 h-48 mx-auto overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800">
-                    <img
-                      src={barber.image || "/placeholder.svg"}
-                      alt={barber.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </div>
-                <CardTitle className="text-2xl font-light tracking-wide">{barber.name}</CardTitle>
-                <CardDescription className="text-gray-600 dark:text-gray-400 font-light text-lg">
+              <div className="w-full h-80 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800">
+                <img
+                  src={barber.image || "/placeholder.svg"}
+                  alt={barber.name}
+                  className="w-full h-full object-cover object-center"
+                />
+              </div>
+              <div className="p-6">
+                <h4 className="text-2xl font-light tracking-wide text-foreground mb-2">{barber.name}</h4>
+                <p className="text-gray-600 dark:text-gray-400 font-light text-lg mb-6">
                   {barber.title}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
+                </p>
                 <div className="space-y-3">
                   <p className="text-gray-700 dark:text-gray-300 font-light">
                     <span className="text-black dark:text-white">Experience:</span> {barber.experience}
@@ -122,9 +94,11 @@ export default function About() {
                     <span className="text-black dark:text-white">Specialty:</span> {barber.specialty}
                   </p>
                 </div>
-                <p className="text-gray-600 dark:text-gray-400 font-light leading-relaxed italic">{barber.story}</p>
-              </CardContent>
-            </Card>
+                {barber.story && (
+                  <p className="text-gray-600 dark:text-gray-400 font-light leading-relaxed italic mt-6">{barber.story}</p>
+                )}
+              </div>
+            </div>
           ))}
         </div>
       </div>

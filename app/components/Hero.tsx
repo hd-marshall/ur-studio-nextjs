@@ -21,7 +21,7 @@ export default function Hero() {
           <div className="space-y-8">
             <div className="space-y-6">
               <div className="space-y-2">
-                <p className="text-sm tracking-[0.3em] text-gray-600 dark:text-gray-400 font-light">
+                <p className="text-sm tracking-[0.3em] text-gray-600 dark:text-gray-400 font-light" style={{ fontFamily: 'var(--font-body)' }}>
                   MELBOURNE'S FINEST
                 </p>
                 <h1 className="text-6xl lg:text-7xl font-extralight leading-none tracking-tight">
@@ -30,7 +30,7 @@ export default function Hero() {
                   <span className="font-light">& PRECISION</span>
                 </h1>
               </div>
-              <p className="text-xl text-zinc-800 dark:text-gray-400 leading-relaxed font-light max-w-lg">
+              <p className="font-body text-xl text-zinc-800 dark:text-gray-400 leading-relaxed font-light max-w-lg" style={{ fontFamily: 'var(--font-body)' }}>
                 Where traditional barbering meets contemporary sophistication. Experience the art of precision cutting
                 in Melbourne's most refined setting.
               </p>
