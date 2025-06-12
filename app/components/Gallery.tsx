@@ -96,7 +96,7 @@ export default function Gallery() {
               className={`px-8 py-3 text-sm tracking-wide font-light ${
                 activeCategory === category.id
                   ? "bg-white text-black"
-                  : "border-gray-700 text-gray-300 hover:bg-white hover:text-black"
+                  : "bg-black border-white text-white hover:bg-white hover:text-black"
               }`}
             >
               {category.name.toUpperCase()}
