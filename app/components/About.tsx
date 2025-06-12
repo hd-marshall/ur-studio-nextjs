@@ -2,7 +2,7 @@ export default function About() {
   const barbers = [
     {
       name: "Milo Le",
-      title: "Founder & Master Barber",
+      title: "Senior Barber",
       experience: "4 years",
       specialty: "Precision cuts & traditional techniques",
       image: "/images/about/milo-headshot.JPG",
@@ -60,7 +60,7 @@ export default function About() {
         </div>
 
         {/* Team */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-16" id="team-members" >
           <p className="text-sm tracking-[0.3em] text-gray-600 dark:text-gray-400 font-light mb-4">MEET THE TEAM</p>
           <h2 className="text-5xl font-extralight text-black dark:text-white mb-6">MASTER CRAFTSMEN</h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-light leading-6" style={{ fontFamily: 'var(--font-body)' }}>

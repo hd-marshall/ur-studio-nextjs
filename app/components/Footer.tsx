@@ -1,39 +1,113 @@
-import { Scissors, Instagram, Facebook, Twitter } from "lucide-react"
+"use client"
+
+import { Instagram, Facebook, Twitter } from "lucide-react"
+import Image from "next/image"
+
+const logoImagePath = "/logo/logo-svg.svg"
 
 export default function Footer() {
+  const scrollToSection = (href: string) => {
+    const element = document.querySelector(href)
+    if (element) {
+      const targetPosition: number = element.getBoundingClientRect().top + window.pageYOffset - 75;
+      
+      const startPosition: number = window.pageYOffset;
+      const distance: number = targetPosition - startPosition;
+      const duration: number = 1000;
+      let startTime: number | null = null;
+      
+      const easeInOutCubic = (t: number): number => {
+        return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+      };
+      
+      const animateScroll = (currentTime: number): void => {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed: number = currentTime - startTime;
+        const progress: number = Math.min(timeElapsed / duration, 1);
+        const ease: number = easeInOutCubic(progress);
+        
+        window.scrollTo(0, startPosition + (distance * ease));
+        
+        if (progress < 1) {
+          requestAnimationFrame(animateScroll);
+        }
+      };
+      
+      requestAnimationFrame(animateScroll);
+    }
+  }
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" })
+  }
+
   return (
     <footer className="bg-black text-white py-16">
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="space-y-6">
-            <div className="flex items-center space-x-3">
-              <div className="p-2 bg-white rounded-full">
-                <Scissors className="h-6 w-6 text-black" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-xl font-light tracking-wider">PRECISION</span>
-                <span className="text-xs tracking-[0.2em] text-gray-400">BARBER STUDIO</span>
-              </div>
-            </div>
+            <button onClick={scrollToTop} className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
+              <Image
+                src={logoImagePath}
+                alt="UR Studio Logo"
+                width={120}
+                height={120}
+                className="w-20 h-20 object-contain filter invert"
+              />
+            </button>
             <p className="text-gray-400 leading-relaxed font-light">
               Where traditional craftsmanship meets contemporary sophistication in the heart of Melbourne.
             </p>
             <div className="flex space-x-4">
-              <Instagram className="h-5 w-5 text-gray-400 hover:text-white cursor-pointer transition-colors" />
-              <Facebook className="h-5 w-5 text-gray-400 hover:text-white cursor-pointer transition-colors" />
-              <Twitter className="h-5 w-5 text-gray-400 hover:text-white cursor-pointer transition-colors" />
+              <button onClick={() => window.open('https://instagram.com/urstudio', '_blank')}>
+                <Instagram className="h-5 w-5 text-gray-400 hover:text-white cursor-pointer transition-colors" />
+              </button>
+              <button onClick={() => window.open('https://facebook.com/urstudio', '_blank')}>
+                <Facebook className="h-5 w-5 text-gray-400 hover:text-white cursor-pointer transition-colors" />
+              </button>
+              <button onClick={() => window.open('https://twitter.com/urstudio', '_blank')}>
+                <Twitter className="h-5 w-5 text-gray-400 hover:text-white cursor-pointer transition-colors" />
+              </button>
             </div>
           </div>
 
-          {/* Services */}
+          {/* Links */}
           <div>
-            <h3 className="text-lg font-light tracking-wide mb-6">SERVICES</h3>
+            <h3 className="text-lg font-light tracking-wide mb-6">LINKS</h3>
             <ul className="space-y-3 text-gray-400 font-light">
-              <li className="hover:text-white cursor-pointer transition-colors">Signature Cuts</li>
-              <li className="hover:text-white cursor-pointer transition-colors">Traditional Shaves</li>
-              <li className="hover:text-white cursor-pointer transition-colors">Beard Sculpting</li>
-              <li className="hover:text-white cursor-pointer transition-colors">Premium Packages</li>
+              <li>
+                <button 
+                  onClick={() => scrollToSection('#services')}
+                  className="hover:text-white cursor-pointer transition-colors text-left"
+                >
+                  Services
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => scrollToSection('#gallery')}
+                  className="hover:text-white cursor-pointer transition-colors text-left"
+                >
+                  Gallery
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => scrollToSection('#about')}
+                  className="hover:text-white cursor-pointer transition-colors text-left"
+                >
+                  About
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => scrollToSection('#contact')}
+                  className="hover:text-white cursor-pointer transition-colors text-left"
+                >
+                  Contact
+                </button>
+              </li>
             </ul>
           </div>
 
@@ -41,10 +115,30 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-light tracking-wide mb-6">QUICK LINKS</h3>
             <ul className="space-y-3 text-gray-400 font-light">
-              <li className="hover:text-white cursor-pointer transition-colors">About Us</li>
-              <li className="hover:text-white cursor-pointer transition-colors">Portfolio</li>
-              <li className="hover:text-white cursor-pointer transition-colors">Pricing</li>
-              <li className="hover:text-white cursor-pointer transition-colors">Contact</li>
+              <li>
+                <button 
+                  onClick={() => window.open('https://www.fresha.com/a/milo-le-hair-melbourne-377-little-bourke-street-rtna1lwa/booking', '_blank')}
+                  className="hover:text-white cursor-pointer transition-colors text-left"
+                >
+                  Book Appointment
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => window.location.href = '/privacy-policy'}
+                  className="hover:text-white cursor-pointer transition-colors text-left"
+                >
+                  Privacy Policy
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => window.location.href = '/cookie-policy'}
+                  className="hover:text-white cursor-pointer transition-colors text-left"
+                >
+                  Cookie Policy
+                </button>
+              </li>
             </ul>
           </div>
 
@@ -52,10 +146,25 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-light tracking-wide mb-6">CONTACT</h3>
             <div className="space-y-3 text-gray-400 font-light">
-              <p>123 Collins Street</p>
-              <p>Melbourne CBD, VIC 3000</p>
-              <p className="hover:text-white cursor-pointer transition-colors">(03) 9123 4567</p>
-              <p className="hover:text-white cursor-pointer transition-colors">hello@precisionbarber.com.au</p>
+              <button 
+                onClick={() => window.open('https://maps.google.com/?q=61+Peels+Street+West+Melbourne+VIC+3003', '_blank')}
+                className="hover:text-white cursor-pointer transition-colors text-left block"
+              >
+                <p>61 Peels Street</p>
+                <p>West Melbourne, VIC 3003</p>
+              </button>
+              <a 
+                href="tel:+61PLACEHOLDER" 
+                className="hover:text-white cursor-pointer transition-colors block"
+              >
+                PLACEHOLDER PHONE NO.
+              </a>
+              <a 
+                href="mailto:info@urstudio.com" 
+                className="hover:text-white cursor-pointer transition-colors block"
+              >
+                info@urstudio.com
+              </a>
             </div>
           </div>
         </div>

@@ -6,17 +6,17 @@ export default function Contact() {
     {
       icon: <MapPin className="h-6 w-6" />,
       title: "Location",
-      details: ["123 Collins Street", "Melbourne CBD", "Victoria 3000"],
+      details: ["61 Peels Street", "Melbourne CBD", "Victoria 3000"],
     },
     {
       icon: <Phone className="h-6 w-6" />,
       title: "Contact",
-      details: ["(03) 9123 4567", "Available 9 AM - 7 PM"],
+      details: ["PLACEHOLDER No.", "Available 9 AM - 7 PM"],
     },
     {
       icon: <Mail className="h-6 w-6" />,
       title: "Email",
-      details: ["hello@precisionbarber.com.au", "Response within 2 hours"],
+      details: ["info@urstudio.com", "Response within 6 hours"],
     },
     {
       icon: <Clock className="h-6 w-6" />,
@@ -30,8 +30,8 @@ export default function Contact() {
       <div className="container mx-auto px-6">
         <div className="text-center mb-20">
           <p className="text-sm tracking-[0.3em] text-[#666666] font-light mb-4">VISIT US</p>
-          <h2 className="text-5xl font-extralight text-white mb-6">MELBOURNE CBD</h2>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto font-light leading-relaxed" style={{ fontFamily: 'var(--font-body)' }}>
+          <h2 className="text-5xl font-extralight text-white mb-6">WEST MELBOURNE</h2>
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto font-light leading-6" style={{ fontFamily: 'var(--font-body)' }}>
             Located in the heart of Melbourne's business district, easily accessible by public transport and with
             convenient parking nearby.
           </p>
@@ -66,7 +66,7 @@ export default function Contact() {
       <div className="w-full">
         <div className="aspect-video relative">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345093747!2d144.9537353153167!3d-37.81720997975171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d4c2b349649%3A0xb6899234e561db11!2sEnvato!5e0!3m2!1sen!2sau!4v1635749234567!5m2!1sen!2sau"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6304.564503352529!2d144.9554753!3d-37.80685729999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d369ef553b3%3A0x51a8579c86424f88!2s61%20Peel%20St%2C%20West%20Melbourne%20VIC%203003!5e0!3m2!1sen!2sau!4v1749701834657!5m2!1sen!2sau"
             width="100%"
             height="100%"
             style={{ border: 0 }}
