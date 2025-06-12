@@ -76,12 +76,12 @@ export default function Gallery() {
     activeCategory === "all" ? galleryItems : galleryItems.filter((item) => item.category === activeCategory)
 
   return (
-    <section id="gallery" className="py-24 bg-gray-50 dark:bg-gray-950">
+    <section id="gallery" className="py-24 bg-gray-950">
       <div className="container mx-auto px-6">
         <div className="text-center mb-20">
-          <p className="text-sm tracking-[0.3em] text-gray-600 dark:text-gray-400 font-light mb-4">PORTFOLIO</p>
-          <h2 className="text-5xl font-extralight text-black dark:text-white mb-6">CRAFTSMANSHIP</h2>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-light leading-6" style={{ fontFamily: 'var(--font-body)' }}>
+          <p className="text-sm tracking-[0.3em] text-gray-400 font-light mb-4">PORTFOLIO</p>
+          <h2 className="text-5xl font-extralight text-white mb-6">CRAFTSMANSHIP</h2>
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto font-light leading-6" style={{ fontFamily: 'var(--font-body)' }}>
             Each piece represents our commitment to excellence and attention to detail in every service we provide.
           </p>
         </div>
@@ -95,8 +95,8 @@ export default function Gallery() {
               onClick={() => setActiveCategory(category.id)}
               className={`px-8 py-3 text-sm tracking-wide font-light ${
                 activeCategory === category.id
-                  ? "bg-black dark:bg-white text-white dark:text-black"
-                  : "border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
+                  ? "bg-white text-black"
+                  : "border-gray-700 text-gray-300 hover:bg-white hover:text-black"
               }`}
             >
               {category.name.toUpperCase()}
@@ -109,7 +109,7 @@ export default function Gallery() {
           {filteredItems.map((item) => (
             <Card
               key={item.id}
-              className="group overflow-hidden hover:shadow-2xl transition-all duration-500 border-gray-200 dark:border-gray-800 bg-white dark:bg-black"
+              className="group overflow-hidden hover:shadow-2xl transition-all duration-500 border-gray-800 bg-black"
             >
               <div className="relative aspect-[4/5] overflow-hidden">
                 <img
