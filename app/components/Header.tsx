@@ -60,26 +60,26 @@ export default function Header() {
   }
 
   return (
-    <header className="fixed top-0 w-full bg-black/95 backdrop-blur-sm border-b border-gray-800 z-50 transition-colors duration-300 overflow-hidden">
-      <div className="container mx-auto px-6 py-4 max-w-full">
-        <div className="grid grid-cols-3 items-center gap-4 w-full">
+    <header className="fixed top-0 w-full max-w-[100vw] bg-black/95 backdrop-blur-sm border-b border-gray-800 z-50 transition-colors duration-300 overflow-hidden">
+      <div className="container mx-auto px-4 py-4 max-w-full">
+        <div className="flex items-center justify-between w-full min-w-0">
           {/* Left: Logo */}
-          <div className="justify-self-start overflow-hidden">
-            <button onClick={scrollToTop} className="flex items-center space-x-3 hover:opacity-80 transition-opacity shrink-0">
-              <div className="flex items-center justify-center bg-black rounded-full w-16 h-16 p-2 shrink-0">
+          <div className="flex items-center">
+            <button onClick={scrollToTop} className="flex items-center hover:opacity-80 transition-opacity shrink-0">
+              <div className="flex items-center justify-center bg-black rounded-full w-12 h-12 lg:w-16 lg:h-16 p-2 shrink-0">
                 <Image
                   src={logoImagePath}
                   alt="UR Studio Logo"
                   width={120}
                   height={120}
-                  className="w-20 h-20 object-contain filter invert shrink-0"
+                  className="w-8 h-8 lg:w-20 lg:h-20 object-contain filter invert shrink-0"
                 />
               </div>
             </button>
           </div>
 
           {/* Center: Desktop Navigation */}
-          <nav className="hidden lg:flex items-center justify-center space-x-8 overflow-hidden">
+          <nav className="hidden lg:flex items-center justify-center space-x-6 xl:space-x-8 overflow-hidden min-w-0 absolute left-1/2 transform -translate-x-1/2">
             {navItems.map((item) => (
               <button
                 key={item.name}
@@ -100,20 +100,20 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Right: Book Button (Desktop) + Mobile Menu */}
-          <div className="justify-self-end flex items-center space-x-4 overflow-hidden">
+          {/* Right: Book Button (Desktop) + Mobile Menu Button */}
+          <div className="flex items-center space-x-2">
             {/* Book Appointment Button - Desktop Only */}
             <Button
               size="sm"
-              className="hidden lg:flex bg-white text-black hover:bg-gray-200 px-4 py-4 text-sm tracking-wide font-light group whitespace-nowrap shrink-0"
+              className="hidden lg:flex bg-white text-black hover:bg-gray-200 px-3 xl:px-4 py-3 xl:py-4 text-xs xl:text-sm tracking-wide font-light group whitespace-nowrap shrink-0"
               onClick={handleBookingClick}
             >
               <span className="hidden xl:inline">BOOK APPOINTMENT</span>
               <span className="xl:hidden">BOOK</span>
-              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform shrink-0" />
+              <ArrowRight className="ml-1 xl:ml-2 h-3 w-3 xl:h-4 xl:w-4 group-hover:translate-x-1 transition-transform shrink-0" />
             </Button>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu Button - Far Right */}
             <Button
               variant="ghost"
               size="icon"

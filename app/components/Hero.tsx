@@ -10,7 +10,7 @@ export default function Hero() {
       id="home"
       className="min-h-screen flex items-center bg-gradient-to-br from-white to-gray-50 dark:from-black dark:to-gray-950"
     >
-      <div className="container mx-auto px-6 py-20">
+      <div className="container mx-auto px-6 pb-20 pt-24">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-8">
             <div className="space-y-6">
