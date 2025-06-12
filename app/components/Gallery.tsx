@@ -88,20 +88,23 @@ export default function Gallery() {
 
         {/* Category Filter */}
         <div className="flex flex-wrap justify-center gap-4 mb-16">
-          {categories.map((category) => (
-            <Button
-              key={category.id}
-              variant={activeCategory === category.id ? "default" : "outline"}
-              onClick={() => setActiveCategory(category.id)}
-              className={`px-8 py-3 text-sm tracking-wide font-light transition-all duration-300 ${
-                activeCategory === category.id
-                  ? "bg-white text-black"
-                  : "bg-black border-white text-white hover:bg-white hover:text-black"
-              }`}
-            >
-              {category.name.toUpperCase()}
-            </Button>
-          ))}
+          {categories.map((category) => {
+            const isActive = activeCategory === category.id
+            return (
+              <Button
+                key={category.id}
+                variant={isActive ? "default" : "outline"}
+                onClick={() => setActiveCategory(category.id)}
+                className={`px-8 py-3 text-sm tracking-wide font-light transition-all duration-300 ${
+                  isActive
+                    ? "bg-white text-black"
+                    : "bg-black border-white text-white hover:bg-white hover:text-black"
+                }`}
+              >
+                {category.name.toUpperCase()}
+              </Button>
+            )
+          })}
         </div>
 
         {/* Gallery Grid */}

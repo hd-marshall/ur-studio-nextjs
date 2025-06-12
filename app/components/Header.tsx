@@ -60,32 +60,62 @@ export default function Header() {
   }
 
   return (
-    <header className="fixed top-0 left-0 right-0 w-screen bg-black/95 backdrop-blur-sm border-b border-gray-800 z-50 transition-colors duration-300 overflow-hidden">
-      <div className="w-full px-3 py-3 lg:px-4 lg:py-4">
-        <div className="flex items-center justify-between w-full">
-          {/* Left: Logo */}
-          <div className="flex items-center shrink-0">
+    <header className="fixed top-0 left-0 right-0 w-full bg-black/95 backdrop-blur-sm border-b border-gray-800 z-50 transition-colors duration-300">
+      <div className="w-full px-2 sm:px-4 py-3 sm:py-4 lg:py-5">
+        {/* Mobile Header */}
+        <div className="flex lg:hidden items-center justify-between w-full">
+          {/* Mobile Logo */}
+          <button onClick={scrollToTop} className="flex items-center hover:opacity-80 transition-opacity shrink-0">
+            <div className="flex items-center justify-center bg-black rounded-full w-14 h-14 p-1">
+              <Image
+                src={logoImagePath}
+                alt="UR Studio Logo"
+                width={56}
+                height={56}
+                className="w-12 h-12 object-contain filter invert"
+              />
+            </div>
+          </button>
+
+          {/* Mobile Menu Button */}
+          <Button
+            variant="ghost"
+            size="sm"
+            className="hover:bg-gray-900 text-white p-1 w-8 h-8"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? 
+              <X className="h-4 w-4 text-white" /> : 
+              <Menu className="h-4 w-4 text-white" />
+            }
+          </Button>
+        </div>
+
+        {/* Desktop Header */}
+        <div className="hidden lg:grid lg:grid-cols-3 lg:items-center lg:gap-4 w-full">
+          {/* Desktop Logo */}
+          <div className="justify-self-start">
             <button onClick={scrollToTop} className="flex items-center hover:opacity-80 transition-opacity">
-              <div className="flex items-center justify-center bg-black rounded-full w-10 h-10 lg:w-16 lg:h-16 p-1 lg:p-2">
+              <div className="flex items-center justify-center bg-black rounded-full w-16 h-16 p-2">
                 <Image
                   src={logoImagePath}
                   alt="UR Studio Logo"
-                  width={80}
-                  height={80}
-                  className="w-8 h-8 lg:w-12 lg:h-12 object-contain filter invert"
+                  width={64}
+                  height={64}
+                  className="w-12 h-12 object-contain filter invert"
                 />
               </div>
             </button>
           </div>
 
-          {/* Center: Desktop Navigation */}
-          <nav className="hidden lg:flex items-center justify-center space-x-4 xl:space-x-6 absolute left-1/2 transform -translate-x-1/2 top-1/2 -translate-y-1/2">
+          {/* Desktop Navigation */}
+          <nav className="flex items-center justify-center space-x-4 xl:space-x-6">
             {navItems.map((item) => (
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
                 className={`
-                  relative text-sm tracking-wide transition-colors duration-300 font-light pb-1 whitespace-nowrap
+                  relative text-xs xl:text-sm tracking-wide transition-colors duration-300 font-light pb-1 whitespace-nowrap
                   text-gray-300 hover:text-white
                   after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-white 
                   after:transition-all after:duration-300 after:ease-in-out
@@ -100,44 +130,30 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Right: Book Button (Desktop) + Mobile Menu Button */}
-          <div className="flex items-center space-x-1 lg:space-x-2 shrink-0">
-            {/* Book Appointment Button - Desktop Only */}
+          {/* Desktop Book Button */}
+          <div className="justify-self-end">
             <Button
               size="sm"
-              className="hidden lg:flex bg-white text-black hover:bg-gray-200 px-2 xl:px-4 py-2 xl:py-3 text-xs xl:text-sm tracking-wide font-light group whitespace-nowrap"
+              className="bg-white text-black hover:bg-gray-200 px-2 xl:px-4 py-1 xl:py-2 text-xs xl:text-sm tracking-wide font-light group whitespace-nowrap"
               onClick={handleBookingClick}
             >
               <span className="hidden xl:inline">BOOK APPOINTMENT</span>
-              <span className="xl:hidden text-xs">BOOK</span>
+              <span className="xl:hidden">BOOK</span>
               <ArrowRight className="ml-1 xl:ml-2 h-3 w-3 xl:h-4 xl:w-4 group-hover:translate-x-1 transition-transform" />
-            </Button>
-
-            {/* Mobile Menu Button - Always White */}
-            <Button
-              variant="ghost"
-              size="icon"
-              className="lg:hidden hover:bg-gray-900 text-white p-2 w-10 h-10"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              {isMenuOpen ? 
-                <X className="h-5 w-5 text-white" /> : 
-                <Menu className="h-5 w-5 text-white" />
-              }
             </Button>
           </div>
         </div>
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <nav className="lg:hidden mt-4 pb-4 border-t border-gray-800">
-            <div className="flex flex-col space-y-4 pt-4 w-full">
+          <nav className="lg:hidden mt-3 pb-3 border-t border-gray-800">
+            <div className="flex flex-col items-center space-y-6 pt-3 w-full">
               {navItems.map((item) => (
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
                   className={`
-                    text-left text-sm tracking-wide transition-colors duration-300 font-light w-full px-2
+                    text-center text-sm tracking-wide transition-colors duration-300 font-light
                     ${activeSection === item.href 
                       ? 'text-white font-medium' 
                       : 'text-gray-300 hover:text-white'
@@ -148,10 +164,10 @@ export default function Header() {
                 </button>
               ))}
               
-              {/* Book Appointment Button - Mobile Only */}
+              {/* Mobile Book Button */}
               <Button
                 size="sm"
-                className="bg-white text-black hover:bg-gray-200 px-4 py-3 text-sm tracking-wide font-light group mt-2 w-full justify-center"
+                className="bg-white text-black hover:bg-gray-200 px-3 py-2 text-sm tracking-wide font-light group mt-4 w-[55%] justify-center"
                 onClick={handleBookingClick}
               >
                 BOOK APPOINTMENT
