@@ -54,34 +54,39 @@ export default function Header() {
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
 
+  const handleBookingClick = () => {
+    window.open('https://www.fresha.com/a/milo-le-hair-melbourne-377-little-bourke-street-rtna1lwa/booking', '_blank')
+    setIsMenuOpen(false) // Close mobile menu after clicking
+  }
+
   return (
-    <header className="fixed top-0 w-full bg-black/95 backdrop-blur-sm border-b border-gray-800 z-50 transition-colors duration-300">
-      <div className="container mx-auto px-6 py-4">
-        <div className="grid grid-cols-3 items-center">
+    <header className="fixed top-0 w-full bg-black/95 backdrop-blur-sm border-b border-gray-800 z-50 transition-colors duration-300 overflow-hidden">
+      <div className="container mx-auto px-6 py-4 max-w-full">
+        <div className="grid grid-cols-3 items-center gap-4 w-full">
           {/* Left: Logo */}
-          <div className="justify-self-start">
-            <button onClick={scrollToTop} className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
-              <div className="flex items-center justify-center bg-black rounded-full w-16 h-16 p-2">
+          <div className="justify-self-start overflow-hidden">
+            <button onClick={scrollToTop} className="flex items-center space-x-3 hover:opacity-80 transition-opacity shrink-0">
+              <div className="flex items-center justify-center bg-black rounded-full w-16 h-16 p-2 shrink-0">
                 <Image
                   src={logoImagePath}
                   alt="UR Studio Logo"
                   width={120}
                   height={120}
-                  className="w-20 h-20 object-contain filter invert"
+                  className="w-20 h-20 object-contain filter invert shrink-0"
                 />
               </div>
             </button>
           </div>
 
           {/* Center: Desktop Navigation */}
-          <nav className="hidden lg:flex items-center justify-center space-x-8">
+          <nav className="hidden lg:flex items-center justify-center space-x-8 overflow-hidden">
             {navItems.map((item) => (
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
                 className={`
-                  relative text-sm tracking-wide transition-colors duration-300 font-light pb-1
-                  text-gray-300 hover:text-white
+                  relative text-sm tracking-wide transition-colors duration-300 font-light pb-1 whitespace-nowrap
+                  text-gray-300 hover:text-white shrink-0
                   after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-white 
                   after:transition-all after:duration-300 after:ease-in-out
                   ${activeSection === item.href 
@@ -95,23 +100,24 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Right: Book Button + Mobile Menu */}
-          <div className="justify-self-end flex items-center space-x-4">
-            {/* Book Appointment Button */}
+          {/* Right: Book Button (Desktop) + Mobile Menu */}
+          <div className="justify-self-end flex items-center space-x-4 overflow-hidden">
+            {/* Book Appointment Button - Desktop Only */}
             <Button
               size="sm"
-              className="bg-white text-black hover:bg-gray-200 px-4 py-4 text-sm tracking-wide font-light group"
-              onClick={() => window.open('https://www.fresha.com/a/milo-le-hair-melbourne-377-little-bourke-street-rtna1lwa/booking', '_blank')}
+              className="hidden lg:flex bg-white text-black hover:bg-gray-200 px-4 py-4 text-sm tracking-wide font-light group whitespace-nowrap shrink-0"
+              onClick={handleBookingClick}
             >
-              BOOK APPOINTMENT
-              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              <span className="hidden xl:inline">BOOK APPOINTMENT</span>
+              <span className="xl:hidden">BOOK</span>
+              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform shrink-0" />
             </Button>
 
             {/* Mobile Menu Button */}
             <Button
               variant="ghost"
               size="icon"
-              className="lg:hidden hover:bg-gray-900"
+              className="lg:hidden hover:bg-gray-900 shrink-0"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -121,14 +127,14 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <nav className="lg:hidden mt-6 pb-6 border-t border-gray-800">
-            <div className="flex flex-col space-y-6 pt-6">
+          <nav className="lg:hidden mt-6 pb-6 border-t border-gray-800 overflow-hidden">
+            <div className="flex flex-col space-y-6 pt-6 w-full">
               {navItems.map((item) => (
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
                   className={`
-                    text-left text-sm tracking-wide transition-colors duration-300 font-light
+                    text-left text-sm tracking-wide transition-colors duration-300 font-light w-full
                     ${activeSection === item.href 
                       ? 'text-white font-medium' 
                       : 'text-gray-300 hover:text-white'
@@ -138,6 +144,16 @@ export default function Header() {
                   {item.name.toUpperCase()}
                 </button>
               ))}
+              
+              {/* Book Appointment Button - Mobile Only */}
+              <Button
+                size="sm"
+                className="bg-white text-black hover:bg-gray-200 px-4 py-4 text-sm tracking-wide font-light group mt-4 w-full justify-center"
+                onClick={handleBookingClick}
+              >
+                BOOK APPOINTMENT
+                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              </Button>
             </div>
           </nav>
         )}
