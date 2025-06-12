@@ -5,6 +5,9 @@ import "./globals.css"
 import { Providers } from "./providers"
 import localFont from 'next/font/local'
 
+import Header from "./components/Header"
+import Footer from "./components/Footer"
+
 const customFont = localFont({
   src: '../public/fonts/Nitti-Normal.ttf',  // Changed from '/fonts/' to './fonts/'
   variable: '--font-body',
@@ -36,9 +39,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`scroll-smooth ${customFont.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`scroll-smooth overflow-x-hidden ${customFont.variable}`} suppressHydrationWarning>
       <body className={inter.className}>
+        <Header />
         <Providers>{children}</Providers>
+        <Footer />
       </body>
     </html>
   )
