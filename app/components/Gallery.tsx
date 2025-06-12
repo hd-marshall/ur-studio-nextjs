@@ -91,18 +91,17 @@ export default function Gallery() {
           {categories.map((category) => {
             const isActive = activeCategory === category.id
             return (
-              <Button
+              <button
                 key={category.id}
-                variant={isActive ? "default" : "outline"}
                 onClick={() => setActiveCategory(category.id)}
-                className={`px-8 py-3 text-sm tracking-wide font-light transition-all duration-300 ${
+                className={`px-8 py-3 text-sm tracking-wide font-light transition-all duration-300 border ${
                   isActive
-                    ? "bg-white text-black"
+                    ? "bg-white text-black border-white"
                     : "bg-black border-white text-white hover:bg-white hover:text-black"
                 }`}
               >
                 {category.name.toUpperCase()}
-              </Button>
+              </button>
             )
           })}
         </div>
