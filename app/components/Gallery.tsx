@@ -93,7 +93,7 @@ export default function Gallery() {
               key={category.id}
               variant={activeCategory === category.id ? "default" : "outline"}
               onClick={() => setActiveCategory(category.id)}
-              className={`px-8 py-3 text-sm tracking-wide font-light ${
+              className={`px-8 py-3 text-sm tracking-wide font-light transition-all duration-300 ${
                 activeCategory === category.id
                   ? "bg-white text-black"
                   : "bg-black border-white text-white hover:bg-white hover:text-black"

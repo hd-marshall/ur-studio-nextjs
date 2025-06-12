@@ -46,8 +46,8 @@ export default function Footer() {
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-4 gap-12">
           {/* Brand */}
-          <div className="space-y-6">
-            <button onClick={scrollToTop} className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
+          <div className="space-y-6 flex flex-col items-center text-center md:items-start md:text-left">
+            <button onClick={scrollToTop} className="flex items-center justify-center md:justify-start hover:opacity-80 transition-opacity">
               <Image
                 src={logoImagePath}
                 alt="UR Studio Logo"
@@ -59,7 +59,7 @@ export default function Footer() {
             <p className="text-gray-400 leading-relaxed font-light">
               Where traditional craftsmanship meets contemporary sophistication in the heart of Melbourne.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex space-x-4 justify-center md:justify-start">
               <button onClick={() => window.open('https://instagram.com/urstudio', '_blank')}>
                 <Instagram className="h-5 w-5 text-gray-400 hover:text-white cursor-pointer transition-colors" />
               </button>
