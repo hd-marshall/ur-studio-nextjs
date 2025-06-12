@@ -19,9 +19,9 @@ export default function Hero() {
                   MELBOURNE'S FINEST
                 </p>
                 <h1 className="text-6xl lg:text-7xl font-extralight leading-none tracking-tight">
-                  CRAFT
+                  CRAFT &
                   <br />
-                  <span className="font-light">& PRECISION</span>
+                  <span className="font-light">PRECISION</span>
                 </h1>
               </div>
               <p className="font-body leading-6 text-xl text-zinc-800 dark:text-gray-400 font-light max-w-lg" style={{ fontFamily: 'var(--font-body)' }}>
