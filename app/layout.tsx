@@ -4,12 +4,11 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 import { Providers } from "./providers"
 import localFont from 'next/font/local'
-
 import Header from "./components/Header"
 import Footer from "./components/Footer"
 
 const customFont = localFont({
-  src: '../public/fonts/Nitti-Normal.ttf',  // Changed from '/fonts/' to './fonts/'
+  src: '../public/fonts/Nitti-Normal.ttf', // Changed from '/fonts/' to './fonts/'
   variable: '--font-body',
   display: 'swap',
 })
@@ -40,10 +39,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`scroll-smooth overflow-x-hidden ${customFont.variable}`} suppressHydrationWarning>
-      <body className={inter.className}>
-        <Header />
-        <Providers>{children}</Providers>
-        <Footer />
+      <body className={`${inter.className} overflow-x-hidden max-w-[100vw] w-full`}>
+        <div className="min-h-screen w-full max-w-[100vw] overflow-x-hidden">
+          <Header />
+          <main className="w-full max-w-[100vw] overflow-x-hidden">
+            <Providers>{children}</Providers>
+          </main>
+          <Footer />
+        </div>
       </body>
     </html>
   )
