@@ -9,7 +9,7 @@ export default function About() {
       story: "",
     },
     {
-      name: "Xian Ri",
+      name: "Xian-Ri",
       title: "Senior Barber",
       experience: "3 years",
       specialty: "Modern fades & beard sculpting",
