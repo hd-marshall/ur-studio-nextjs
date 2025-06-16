@@ -95,7 +95,7 @@ export default function Gallery() {
               <button
                 key={category.id}
                 onClick={() => setActiveCategory(category.id)}
-                className={`px-8 py-3 text-sm tracking-wide font-light transition-all duration-300 border rounded-lg ${
+                className={`px-6 py-2 md:px-8 md:py-3 text-xs md:text-sm tracking-wide font-light transition-all duration-300 border rounded-lg ${
                   isActive
                     ? "bg-white text-black border-white"
                     : "bg-black border-white text-white hover:bg-white hover:text-black"
