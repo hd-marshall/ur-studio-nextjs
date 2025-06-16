@@ -9,35 +9,36 @@ export default function Gallery() {
 
   const categories = [
     { id: "all", name: "All Work" },
-    { id: "cuts", name: "Complete Haircut" },
-    { id: "shaves", name: "Hair and Beard Trim" },
+    { id: "short", name: "Short Trim" },
+    { id: "long", name: "Long Trim" },
+    { id: "shaves", name: "Hair and Beard" },
   ]
 
   const galleryItems = [
     {
       id: 1,
-      category: "cuts",
+      category: "long",
       image: "/images/gallery/gallery-1.JPG",
       title: "Wolf Cut ? but cool",
       description: "Robust New",
     },
     {
       id: 2,
-      category: "cuts",
+      category: "short",
       image: "/images/gallery/gallery-2.PNG",
       title: "Mid Fade",
       description: "Dyed Hair",
     },
     {
       id: 3,
-      category: "cuts",
+      category: "short",
       image: "/images/gallery/gallery-3.JPEG",
       title: "Low Drop Fade",
       description: "Masterful shaping",
     },
     {
       id: 4,
-      category: "cuts",
+      category: "long",
       image: "/images/gallery/gallery-5.PNG",
       title: "Textured Crop?",
       description: "Modern sophistication",
@@ -51,21 +52,21 @@ export default function Gallery() {
     },
     {
       id: 6,
-      category: "cuts",
+      category: "short",
       image: "/images/gallery/gallery-7.jpg",
       title: "Crop Cut",
       description: "Refined grooming",
     },
     {
       id: 7,
-      category: "cuts",
+      category: "short",
       image: "/images/gallery/gallery-10.JPG",
       title: "Modern Mullet",
       description: "Professional polish",
     },
     {
       id: 8,
-      category: "cuts",
+      category: "long",
       image: "/images/gallery/gallery-11.JPG",
       title: "Modern Mullet ?",
       description: "Luxurious experience",

@@ -2,7 +2,7 @@ import { Award, Users, Clock, Star } from "lucide-react"
 
 export default function Stats() {
   const stats = [
-    { icon: <Award className="h-8 w-8" />, value: "7", label: "Years Crafting" },
+    { icon: <Award className="h-8 w-8" />, value: "8", label: "Years Experience" },
     { icon: <Users className="h-8 w-8" />, value: "200+", label: "5 Star Satisfied Clients" },
     { icon: <Clock className="h-8 w-8" />, value: "24/7", label: "Online Booking" },
     { icon: <Star className="h-8 w-8" />, value: "5.0", label: "Average Rating" },
