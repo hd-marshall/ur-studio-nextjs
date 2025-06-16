@@ -78,11 +78,11 @@ export default function Gallery() {
   return (
     <section id="gallery" className="py-24 bg-gray-950">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-20">
+        <div className="text-center mb-12">
           <p className="text-sm tracking-[0.3em] text-gray-400 font-light mb-4">PORTFOLIO</p>
           <h2 className="text-5xl font-extralight text-white mb-6">SHOWCASE</h2>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto font-light leading-6" style={{ fontFamily: 'var(--font-body)' }}>
-            Each piece represents our commitment to excellence and attention to detail in every service we provide.
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto font-extralight leading-6" style={{ fontFamily: 'var(--font-body)' }}>
+          Each piece represents <br /> our commitment to excellence and attention to detail in every service we provide.
           </p>
         </div>
 

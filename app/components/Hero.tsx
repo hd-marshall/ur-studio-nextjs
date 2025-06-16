@@ -24,9 +24,9 @@ export default function Hero() {
                   <span className="font-light">PRECISION</span>
                 </h1>
               </div>
-              <p className="font-body leading-6 text-xl text-zinc-800 dark:text-gray-400 font-light max-w-lg" style={{ fontFamily: 'var(--font-body)' }}>
-                Where traditional barbering meets contemporary sophistication. <br></br>Experience the art of precision cutting
-                in Melbourne's most refined setting.
+              <p className="font-body leading-6 text-lg text-gray-600 dark:text-gray-400 font-extralight max-w-lg" style={{ fontFamily: 'var(--font-body)' }}>
+              Where traditional barbering meets contemporary sophistication. Experience the art of precision cutting
+              in Melbourne's most refined setting.
               </p>
             </div>
 

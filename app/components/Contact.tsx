@@ -29,9 +29,9 @@ export default function Contact() {
     <section id="contact" className="pt-8 pb-8 bg-black">
       <div className="container mx-auto px-6">
         <div className="text-center mb-20">
-          <p className="text-sm tracking-[0.3em] text-[#666666] font-light mb-4">VISIT US</p>
+          <p className="text-sm tracking-[0.3em] text-gray-400 font-light mb-4">VISIT US</p>
           <h2 className="text-5xl font-extralight text-white mb-6">WEST MELBOURNE</h2>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto font-light leading-6" style={{ fontFamily: 'var(--font-body)' }}>
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto font-light leading-6" style={{ fontFamily: 'var(--font-body)' }}>
             Located in the heart of Melbourne's business district, easily accessible by public transport and with
             convenient parking nearby.
           </p>

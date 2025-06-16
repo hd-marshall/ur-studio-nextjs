@@ -8,7 +8,7 @@ import Header from "./components/Header"
 import Footer from "./components/Footer"
 
 const customFont = localFont({
-  src: '../public/fonts/Nitti-Normal.ttf', // Changed from '/fonts/' to './fonts/'
+  src: '../public/fonts/Nitti-Normal.ttf',
   variable: '--font-body',
   display: 'swap',
 })
@@ -19,14 +19,14 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "UR Barbers - Professional Men's Barber | Melbourne CBD",
+  title: "UR Studio - Men's Barber | West Melbourne",
   description:
     "Experience Melbourne's finest men's grooming at Precision Barber Studio. Premium haircuts, traditional shaves, and beard sculpting in the heart of Melbourne CBD. Book your appointment today.",
   keywords:
-    "premium barber Melbourne, men's haircuts CBD, traditional shave Melbourne, beard grooming, luxury barbershop, Collins Street barber",
+    "premium barber Melbourne, men's haircuts west melbourne, traditional shave Melbourne, beard grooming, luxury barbershop",
   openGraph: {
-    title: "Precision Barber Studio - Premium Men's Grooming",
-    description: "Where traditional craftsmanship meets contemporary sophistication in Melbourne CBD.",
+    title: "UR Studio - Men's Barber | West Melbourne",
+    description: "Modern and tailored barbers in West Melbourne.",
     type: "website",
   },
   generator: 'v0.dev'
