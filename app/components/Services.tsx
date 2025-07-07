@@ -12,30 +12,38 @@ export default function Services() {
     {
       icon: <Scissors className="h-8 w-8" />,
       title: "Scissors Cut",
-      description: "Precision cutting tailored to your individual style and facial structure.",
-      features: ["Consultation & Analysis", "Precision Cutting", "Styling & Finish", "Maintenance Advice"],
-      duration: "40 min",
+      description: "A tailored haircut crafted with scissors for a precise finish.",
+      features: [],
+      duration: "45 min",
     },
     {
       icon: <Sparkles className="h-8 w-8" />,
-      title: "Complete Haircut",
-      description: "Classic hot towel shave using traditional techniques and premium products.",
-      features: ["Hot Towel Preparation", "Traditional Razor Shave", "Moisturizing Treatment", "Aftercare"],
-      duration: "45 min",
+      title: (
+        <>
+          Haircut <br /> (With or without Fade)
+        </>
+      ),
+      description: "For a sharp, clean look, the sides and back can be faded close to the skin if desired, or softly blended for a more natural appearance.",
+      features: [],
+      duration: "40 min",
     },
     {
       icon: <Crown className="h-8 w-8" />,
       title: "Hot Towel Shave",
-      description: "Expert beard trimming and shaping to complement your facial features.",
-      features: ["Beard Analysis", "Precision Trimming", "Shape Definition", "Conditioning Treatment"],
+      description: "Treat yourself to a traditional barbershop shave with a luxurious hot towel experience. Pre-shave cream, followed by a warm towel, a straight razor shave, and finish with a soothing after-shave cream, leaving you with revitalised appearance.",
+      features: [],
       duration: "30 min",
     },
     {
       icon: <Zap className="h-8 w-8" />,
-      title: "Haircut and Beard Trim",
-      description: "Our signature full-service experience combining all our premium services.",
-      features: ["Signature Cut", "Traditional Shave", "Beard Sculpting", "Scalp Treatment"],
-      duration: "75 min",
+      title: (
+        <>
+          Beard Trim <br /> (Trimmer only)
+        </>
+      ),
+      description: "Gently shape and trim your beard to your desired length and style, ensuring a refined and well-groomed appearance.",
+      features: [],
+      duration: "20 min",
     },
   ]
 
@@ -90,7 +98,7 @@ export default function Services() {
                 >
                   {service.icon}
                 </div>
-                <CardTitle className="text-xl font-light tracking-wide" style={{ color: '#0C0C0C' }}>
+                <CardTitle className="text-xl font-light tracking-wide min-h-5" style={{ color: '#0C0C0C' }}>
                   {service.title}
                 </CardTitle>
                 <div className="text-sm tracking-wide" style={{ color: '#565656' }}>

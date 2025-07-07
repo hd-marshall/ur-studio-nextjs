@@ -2,43 +2,41 @@
 
 import { Instagram, Facebook, Twitter } from "lucide-react"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 
 const logoImagePath = "/logo/logo-svg.svg"
 
 export default function Footer() {
+  const router = useRouter()
+
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href)
+    // Check if element exists on current page
+    const element = document.querySelector(href) as HTMLElement
     if (element) {
-      const targetPosition: number = element.getBoundingClientRect().top + window.pageYOffset - 75;
+      // Element found - smooth scroll with offset
+      const elementPosition = element.offsetTop
+      const offsetPosition = elementPosition - 50 // 50px padding from top
       
-      const startPosition: number = window.pageYOffset;
-      const distance: number = targetPosition - startPosition;
-      const duration: number = 1000;
-      let startTime: number | null = null;
-      
-      const easeInOutCubic = (t: number): number => {
-        return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
-      };
-      
-      const animateScroll = (currentTime: number): void => {
-        if (startTime === null) startTime = currentTime;
-        const timeElapsed: number = currentTime - startTime;
-        const progress: number = Math.min(timeElapsed / duration, 1);
-        const ease: number = easeInOutCubic(progress);
-        
-        window.scrollTo(0, startPosition + (distance * ease));
-        
-        if (progress < 1) {
-          requestAnimationFrame(animateScroll);
-        }
-      };
-      
-      requestAnimationFrame(animateScroll);
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      })
+    } else {
+      // Element not found - navigate to home page with hash
+      router.push(`/${href}`)
     }
   }
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" })
+  }
+
+  const handleBookingClick = () => {
+    window.open('https://www.fresha.com/a/milo-le-hair-melbourne-377-little-bourke-street-rtna1lwa/booking', '_blank')
+  }
+
+  const handlePageNavigation = (path: string) => {
+    router.push(path)
   }
 
   return (
@@ -117,7 +115,7 @@ export default function Footer() {
             <ul className="space-y-3 text-gray-400 font-light">
               <li>
                 <button 
-                  onClick={() => window.open('https://www.fresha.com/a/milo-le-hair-melbourne-377-little-bourke-street-rtna1lwa/booking', '_blank')}
+                  onClick={handleBookingClick}
                   className="hover:text-white cursor-pointer transition-colors text-left"
                 >
                   Book Appointment
@@ -125,7 +123,7 @@ export default function Footer() {
               </li>
               <li>
                 <button 
-                  onClick={() => window.location.href = '/privacy-policy'}
+                  onClick={() => handlePageNavigation('/privacy-policy')}
                   className="hover:text-white cursor-pointer transition-colors text-left"
                 >
                   Privacy Policy
@@ -133,10 +131,18 @@ export default function Footer() {
               </li>
               <li>
                 <button 
-                  onClick={() => window.location.href = '/cookie-policy'}
+                  onClick={() => handlePageNavigation('/cookie-policy')}
                   className="hover:text-white cursor-pointer transition-colors text-left"
                 >
                   Cookie Policy
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => handlePageNavigation('/booking-policy')}
+                  className="hover:text-white cursor-pointer transition-colors text-left"
+                >
+                  Booking Policy
                 </button>
               </li>
             </ul>

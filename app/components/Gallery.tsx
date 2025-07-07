@@ -2,7 +2,6 @@
 
 import { useState } from "react"
 import { Card } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
 
 export default function Gallery() {
   const [activeCategory, setActiveCategory] = useState("all")
@@ -19,57 +18,73 @@ export default function Gallery() {
       id: 1,
       category: "long",
       image: "/images/gallery/gallery-1.JPG",
-      title: "Wolf Cut ? but cool",
-      description: "Robust New",
+      title: "Mod Cut",
     },
     {
       id: 2,
       category: "short",
       image: "/images/gallery/gallery-2.PNG",
-      title: "Mid Fade",
-      description: "Dyed Hair",
+      title: "Pompadour Slick Back",
     },
     {
       id: 3,
       category: "short",
       image: "/images/gallery/gallery-3.JPEG",
-      title: "Low Drop Fade",
-      description: "Masterful shaping",
+      title: "Quiff Low Drop Fade",
     },
     {
       id: 4,
       category: "long",
       image: "/images/gallery/gallery-5.PNG",
-      title: "Textured Crop?",
-      description: "Modern sophistication",
+      title: "Classic Brush Cut",
     },
     {
       id: 5,
       category: "shaves",
       image: "/images/gallery/gallery-6.JPG",
-      title: "High Fade and Beard Line Up",
-      description: "Classic technique",
+      title: "Texture Fringe Mid Skin Fade Beard Line Up",
     },
     {
       id: 6,
       category: "short",
-      image: "/images/gallery/gallery-7.jpg",
-      title: "Crop Cut",
-      description: "Refined grooming",
+      image: "/images/gallery/gallery-4.jpg",
+      title: "Design Mod Cut",
     },
     {
       id: 7,
       category: "short",
       image: "/images/gallery/gallery-10.JPG",
-      title: "Modern Mullet",
-      description: "Professional polish",
+      title: "Texture Crop Mullet Taper",
     },
     {
       id: 8,
       category: "long",
       image: "/images/gallery/gallery-11.JPG",
-      title: "Modern Mullet ?",
-      description: "Luxurious experience",
+      title: "Modern Mullet",
+    },
+    {
+      id: 9,
+      category: "short",
+      image: "/images/gallery/gallery-14.PNG",
+      title: "Burst Fade",
+    },
+    {
+      id: 10,
+      category: "short",
+      image: "/images/gallery/gallery-15.PNG",
+      title: "Mid Part",
+    },
+    {
+      id: 11,
+      category: "long",
+      image: "/images/gallery/gallery-16.jpg",
+      title: "Old Money",
+    },
+    {
+      id: 12,
+      category: "long",
+      image: "/images/gallery/gallery-17.PNG",
+      title: "Mod Cut",
     },
   ]
 
@@ -123,7 +138,6 @@ export default function Gallery() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
                   <h3 className="font-light text-lg tracking-wide mb-1">{item.title}</h3>
-                  <p className="text-sm text-gray-300 font-light">{item.description}</p>
                 </div>
               </div>
             </Card>

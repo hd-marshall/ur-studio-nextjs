@@ -4,14 +4,17 @@ import { useState } from "react"
 import { Menu, X, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 
 const logoImagePath = "/logo/logo-svg.svg"
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const router = useRouter()
 
   const navItems = [
-    { name: "About", href: "#about" },
+    { name: "Home", href: "/"},
+    { name: "About Us", href: "#about" },
     { name: "Services", href: "#services" },
     { name: "Gallery", href: "#gallery" },
     { name: "Contact", href: "#contact" },
@@ -19,11 +22,36 @@ export default function Header() {
   ]
 
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href)
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-    }
+    // Close mobile menu first
     setIsMenuOpen(false)
+    
+    // Handle different types of links
+    if (href === "/") {
+      // Home link - navigate to home page
+      router.push("/")
+      return
+    }
+    
+    if (href.startsWith("#")) {
+      // Hash link - check if element exists on current page
+      const element = document.querySelector(href) as HTMLElement
+      if (element) {
+        // Element found - smooth scroll to it with offset
+        const elementPosition = element.offsetTop
+        const offsetPosition = elementPosition - 70 // 50px padding from top
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        })
+      } else {
+        // Element not found - navigate to home page with hash
+        router.push(`/${href}`)
+      }
+    } else {
+      // Regular page link
+      router.push(href)
+    }
   }
 
   const scrollToTop = () => {

@@ -19,14 +19,13 @@ export default function Hero() {
                   MELBOURNE'S FINEST
                 </p>
                 <h1 className="text-6xl lg:text-7xl font-extralight leading-none tracking-tight">
-                  CRAFT &
+                  UR
                   <br />
-                  <span className="font-light">PRECISION</span>
+                  <span className="font-light">STUDIO</span>
                 </h1>
               </div>
-              <p className="font-body leading-6 text-lg text-gray-600 dark:text-gray-400 font-extralight max-w-lg" style={{ fontFamily: 'var(--font-body)' }}>
-              Where traditional barbering meets contemporary sophistication. Experience the art of precision cutting
-              in Melbourne's most refined setting.
+              <p className="font-body leading-6 text-md text-gray-600 dark:text-gray-400 font-extralight max-w-lg" style={{ fontFamily: 'var(--font-body)' }}>
+                Born from passion, fuelled by youth we bring flare, edge, and a new wave of barber culture to the city of Melbourne. Every service is a tailored experience built around you, truly making it 'yours'.
               </p>
             </div>
 
