@@ -36,7 +36,7 @@ export default function Hero() {
               <Button
                 size="lg"
                 className="bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 px-8 py-4 text-sm tracking-wide font-light group"
-                onClick={() => window.open('https://www.fresha.com/a/milo-le-hair-melbourne-377-little-bourke-street-rtna1lwa/booking', '_blank')}
+                onClick={() => window.open('https://www.fresha.com/a/ur-studio-melbourne-61a-peel-street-lmpkp2dv/all-offer?venue=true', '_blank')}
               >
                 BOOK APPOINTMENT
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />

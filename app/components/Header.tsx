@@ -59,7 +59,7 @@ export default function Header() {
   }
 
   const handleBookingClick = () => {
-    window.open('https://www.fresha.com/a/milo-le-hair-melbourne-377-little-bourke-street-rtna1lwa/booking', '_blank')
+    window.open('https://www.fresha.com/a/ur-studio-melbourne-61a-peel-street-lmpkp2dv/all-offer?venue=true', '_blank')
     setIsMenuOpen(false) // Close mobile menu after clicking
   }
 
