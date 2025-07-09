@@ -40,7 +40,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-black text-white py-16">
+    <footer className="text-white py-16" style={{ backgroundColor: '#383E3E' }}>
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-4 gap-12">
           {/* Brand */}

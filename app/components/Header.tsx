@@ -64,13 +64,13 @@ export default function Header() {
   }
 
   return (
-    <header className="fixed top-0 left-0 right-0 w-full bg-black/95 backdrop-blur-sm border-b border-gray-800 z-50 transition-colors duration-300">
+    <header className="fixed top-0 left-0 right-0 w-full backdrop-blur-sm border-b border-gray-800 z-50 transition-colors duration-300" style={{ backgroundColor: '#383E3E' }}>
       <div className="w-full px-2 sm:px-4 py-3 sm:py-4 lg:py-5">
         {/* Mobile Header */}
         <div className="flex lg:hidden items-center justify-between w-full">
           {/* Mobile Logo */}
           <button onClick={scrollToTop} className="flex items-center hover:opacity-80 transition-opacity shrink-0">
-            <div className="flex items-center justify-center bg-black rounded-full w-14 h-14 p-1">
+            <div className="flex items-center justify-center rounded-full w-14 h-14 p-1" style={{ backgroundColor: '#383E3E' }}>
               <Image
                 src={logoImagePath}
                 alt="UR Studio Logo"
@@ -100,7 +100,7 @@ export default function Header() {
           {/* Desktop Logo */}
           <div className="justify-self-start">
             <button onClick={scrollToTop} className="flex items-center hover:opacity-80 transition-opacity">
-              <div className="flex items-center justify-center bg-black rounded-full w-16 h-16 p-2">
+              <div className="flex items-center justify-center rounded-full w-16 h-16 p-2" style={{ backgroundColor: '#383E3E' }}>
                 <Image
                   src={logoImagePath}
                   alt="UR Studio Logo"

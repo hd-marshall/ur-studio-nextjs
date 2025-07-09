@@ -92,7 +92,7 @@ export default function Gallery() {
     activeCategory === "all" ? galleryItems : galleryItems.filter((item) => item.category === activeCategory)
 
   return (
-    <section id="gallery" className="py-24 bg-gray-950">
+    <section id="gallery" className="py-24 " style={{ backgroundColor: '#383E3E' }}>
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
           <p className="text-sm tracking-[0.3em] text-gray-400 font-light mb-4">PORTFOLIO</p>

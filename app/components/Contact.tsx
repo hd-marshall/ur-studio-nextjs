@@ -30,7 +30,7 @@ export default function Contact() {
   ]
 
   return (
-    <section id="contact" className="pt-24 pb-8 bg-black">
+    <section id="contact" className="pt-24 pb-8" style={{ backgroundColor: '#383E3E' }}>
       <div className="container mx-auto px-6">
         <div className="text-center mb-20">
           <p className="text-sm tracking-[0.3em] text-gray-400 font-light mb-4">VISIT US</p>
