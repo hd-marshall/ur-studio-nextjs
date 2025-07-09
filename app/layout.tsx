@@ -2,8 +2,7 @@ import React from 'react';
 import type { Metadata } from 'next'
 import { Inter } from "next/font/google"
 import localFont from 'next/font/local'
-import { Analytics } from "@vercel/analytics/react"
-import { SpeedInsights } from "@vercel/speed-insights/next"
+
 import "./globals.css"
 import { Providers } from "./providers"
 import Header from "./components/Header"
@@ -147,9 +146,6 @@ export default function RootLayout({
           <main className="w-full max-w-[100vw] overflow-x-hidden">
             <Providers>
               {children}
-              {/* Vercel Analytics */}
-              <SpeedInsights />
-              <Analytics />
             </Providers>
           </main>
           
