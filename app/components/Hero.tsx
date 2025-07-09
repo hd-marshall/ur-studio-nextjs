@@ -1,10 +1,8 @@
 "use client"
-
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 
 export default function Hero() {
-
   return (
     <section
       id="home"
@@ -15,10 +13,10 @@ export default function Hero() {
           <div className="space-y-8">
             <div className="space-y-6">
               <div className="space-y-2">
-                <p className="text-sm tracking-[0.3em] text-gray-600 dark:text-gray-400 font-light" style={{ fontFamily: 'var(--font-body)' }}>
+                <p className="text-sm tracking-[0.3em] text-gray-600 dark:text-gray-400 font-light text-center lg:text-left" style={{ fontFamily: 'var(--font-body)' }}>
                   MELBOURNE'S FINEST
                 </p>
-                <div className="w-64 h-auto pt-8 pb-4">
+                <div className="w-48 lg:w-64 h-auto pt-8 pb-4 mx-auto lg:mx-0">
                   <img 
                     src="/logo/logo-svg.svg" 
                     alt="UR Studio Logo"
@@ -30,12 +28,11 @@ export default function Hero() {
                   />
                 </div>
               </div>
-              <p className="font-body leading-6 text-md text-gray-600 dark:text-gray-400 font-extralight max-w-lg" style={{ fontFamily: 'var(--font-body)' }}>
+              <p className="font-body leading-6 text-md text-gray-600 dark:text-gray-400 font-extralight max-w-lg text-center lg:text-left mx-auto lg:mx-0" style={{ fontFamily: 'var(--font-body)' }}>
                 UR Studio: Born from passion, fuelled by youth we - bring flare, edge, and a new wave of barber culture to the city of Melbourne. Every service is a tailored experience built around you, truly making it 'yours'.
               </p>
             </div>
-
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Button
                 size="lg"
                 className="bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 px-8 py-4 text-sm tracking-wide font-light group"
@@ -84,7 +81,6 @@ export default function Hero() {
               </Button>
             </div>
           </div>
-
           <div className="relative">
             <div className="aspect-[4/5] relative overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800">
               <img
