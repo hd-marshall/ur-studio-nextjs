@@ -58,13 +58,13 @@ export default function Footer() {
               Where traditional craftsmanship meets contemporary sophistication in the heart of Melbourne.
             </p>
             <div className="flex space-x-4 justify-center md:justify-start">
-              <button onClick={() => window.open('https://instagram.com/urstudio', '_blank')}>
+              <button onClick={() => window.open('https://www.instagram.com/urstudio.au?igsh=MXBoanY0Y2FjamJzbA==', '_blank')}>
                 <Instagram className="h-5 w-5 text-gray-400 hover:text-white cursor-pointer transition-colors" />
               </button>
-              <button onClick={() => window.open('https://facebook.com/urstudio', '_blank')}>
+              <button onClick={() => window.open('https://facebook.com/', '_blank')}>
                 <Facebook className="h-5 w-5 text-gray-400 hover:text-white cursor-pointer transition-colors" />
               </button>
-              <button onClick={() => window.open('https://twitter.com/urstudio', '_blank')}>
+              <button onClick={() => window.open('https://twitter.com/', '_blank')}>
                 <Twitter className="h-5 w-5 text-gray-400 hover:text-white cursor-pointer transition-colors" />
               </button>
             </div>
