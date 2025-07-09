@@ -62,30 +62,30 @@ export default function Gallery() {
       image: "/images/gallery/gallery-11.JPG",
       title: "Modern Mullet",
     },
-    {
-      id: 9,
-      category: "short",
-      image: "/images/gallery/gallery-14.PNG",
-      title: "Burst Fade",
-    },
-    {
-      id: 10,
-      category: "short",
-      image: "/images/gallery/gallery-15.PNG",
-      title: "Mid Part",
-    },
-    {
-      id: 11,
-      category: "long",
-      image: "/images/gallery/gallery-16.jpg",
-      title: "Old Money",
-    },
-    {
-      id: 12,
-      category: "long",
-      image: "/images/gallery/gallery-17.PNG",
-      title: "Mod Cut",
-    },
+    // {
+    //   id: 9,
+    //   category: "short",
+    //   image: "/images/gallery/gallery-14.PNG",
+    //   title: "Burst Fade",
+    // },
+    // {
+    //   id: 10,
+    //   category: "short",
+    //   image: "/images/gallery/gallery-15.PNG",
+    //   title: "Mid Part",
+    // },
+    // {
+    //   id: 11,
+    //   category: "long",
+    //   image: "/images/gallery/gallery-16.jpg",
+    //   title: "Old Money",
+    // },
+    // {
+    //   id: 12,
+    //   category: "long",
+    //   image: "/images/gallery/gallery-17.PNG",
+    //   title: "Mod Cut",
+    // },
   ]
 
   const filteredItems =
