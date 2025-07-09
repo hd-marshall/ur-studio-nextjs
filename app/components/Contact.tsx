@@ -6,22 +6,26 @@ export default function Contact() {
     {
       icon: <MapPin className="h-6 w-6" />,
       title: "Location",
-      details: ["61 Peels Street", "Melbourne CBD", "Victoria 3000"],
+      details: ["61A Peel Street", "Melbourne CBD", "Victoria 3000"],
     },
     {
       icon: <Phone className="h-6 w-6" />,
       title: "Contact",
-      details: ["PLACEHOLDER No.", "Available 9 AM - 7 PM"],
+      details: ["0447 607 947", "Available during working hours."],
+      href: "tel:0447607947",
+      clickable: true,
     },
     {
       icon: <Mail className="h-6 w-6" />,
       title: "Email",
-      details: ["info@urstudio.com", "Response within 6 hours"],
+      details: ["urstudiomelb@gmail.com", "Response within 6 hours"],
+      href: "mailto:urstudiomelb@gmail.com",
+      clickable: true,
     },
     {
       icon: <Clock className="h-6 w-6" />,
       title: "Hours",
-      details: ["Monday - Friday: 9:00 AM - 7:00 PM", "Saturday: 8:00 AM - 6:00 PM", "Sunday: 10:00 AM - 5:00 PM"],
+      details: ["Wednesday: 10:00 AM - 6:30 PM", "Thursday: 10:00 AM - 6:30 PM", "Friday: 10:00 AM - 6:30 PM", "Saturday: 10:30 AM - 5:30 PM", "Sunday: 10:30 AM - 5:30 PM"],
     },
   ]
 
@@ -36,32 +40,65 @@ export default function Contact() {
             convenient parking nearby.
           </p>
         </div>
-
+        
         {/* Contact Information Cards */}
         <div className="flex flex-col lg:flex-row gap-6 mb-16">
-          {contactInfo.map((info, index) => (
-            <Card
-              key={index}
-              className="flex-1 hover:shadow-xl transition-all duration-500 bg-white border-[#E0E0E0] rounded-2xl shadow-md"
-            >
-              <CardHeader className="pb-4">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-[#9C9C9C] rounded-full text-white">{info.icon}</div>
-                  <CardTitle className="text-lg font-normal tracking-wide text-[#2C2C2C]">{info.title}</CardTitle>
-                </div>
-              </CardHeader>
-              <CardContent>
-                {info.details.map((detail, idx) => (
-                  <p key={idx} className="text-[#666666] text-sm leading-relaxed font-light">
-                    {detail}
-                  </p>
-                ))}
-              </CardContent>
-            </Card>
-          ))}
+          {contactInfo.map((info, index) => {
+            const CardComponent = info.clickable ? 'a' : 'div';
+            
+            return (
+              <Card
+                key={index}
+                className={`flex-1 transition-all duration-300 bg-white border-[#E0E0E0] rounded-2xl shadow-md ${
+                  info.clickable 
+                    ? 'hover:shadow-lg hover:scale-102 hover:-translate-y-0.5 cursor-pointer' 
+                    : 'hover:shadow-xl'
+                }`}
+                {...(info.clickable && {
+                  as: CardComponent,
+                  href: info.href,
+                  style: { textDecoration: 'none' }
+                })}
+              >
+                {info.clickable ? (
+                  <a href={info.href} className="block text-inherit no-underline">
+                    <CardHeader className="pb-4">
+                      <div className="flex items-center gap-3">
+                        <div className="p-2 bg-[#9C9C9C] rounded-full text-white">{info.icon}</div>
+                        <CardTitle className="text-lg font-normal tracking-wide text-[#2C2C2C]">{info.title}</CardTitle>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      {info.details.map((detail, idx) => (
+                        <p key={idx} className="text-[#666666] text-sm leading-relaxed font-light">
+                          {detail}
+                        </p>
+                      ))}
+                    </CardContent>
+                  </a>
+                ) : (
+                  <>
+                    <CardHeader className="pb-4">
+                      <div className="flex items-center gap-3">
+                        <div className="p-2 bg-[#9C9C9C] rounded-full text-white">{info.icon}</div>
+                        <CardTitle className="text-lg font-normal tracking-wide text-[#2C2C2C]">{info.title}</CardTitle>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      {info.details.map((detail, idx) => (
+                        <p key={idx} className="text-[#666666] text-sm leading-relaxed font-light">
+                          {detail}
+                        </p>
+                      ))}
+                    </CardContent>
+                  </>
+                )}
+              </Card>
+            )
+          })}
         </div>
       </div>
-
+      
       {/* Full Width Map */}
       <div className="w-full">
         <div className="aspect-video relative">

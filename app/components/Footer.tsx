@@ -156,20 +156,20 @@ export default function Footer() {
                 onClick={() => window.open('https://maps.google.com/?q=61+Peels+Street+West+Melbourne+VIC+3003', '_blank')}
                 className="hover:text-white cursor-pointer transition-colors text-left block"
               >
-                <p>61 Peels Street</p>
+                <p>61A Peel Street</p>
                 <p>West Melbourne, VIC 3003</p>
               </button>
               <a 
-                href="tel:+61PLACEHOLDER" 
+                href="tel:0447 607 947" 
                 className="hover:text-white cursor-pointer transition-colors block"
               >
-                PLACEHOLDER PHONE NO.
+                0447 607 947
               </a>
               <a 
-                href="mailto:info@urstudio.com" 
+                href="mailto:urstudiomelb@gmail.com" 
                 className="hover:text-white cursor-pointer transition-colors block"
               >
-                info@urstudio.com
+                urstudiomelb@gmail.com
               </a>
             </div>
           </div>
