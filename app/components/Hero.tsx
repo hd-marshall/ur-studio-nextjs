@@ -18,14 +18,20 @@ export default function Hero() {
                 <p className="text-sm tracking-[0.3em] text-gray-600 dark:text-gray-400 font-light" style={{ fontFamily: 'var(--font-body)' }}>
                   MELBOURNE'S FINEST
                 </p>
-                <h1 className="text-6xl lg:text-7xl font-extralight leading-none tracking-tight">
-                  UR
-                  <br />
-                  <span className="font-light">STUDIO</span>
-                </h1>
+                <div className="w-64 h-auto pt-8 pb-4">
+                  <img 
+                    src="/logo/logo-svg.svg" 
+                    alt="UR Studio Logo"
+                    className="w-full h-auto"
+                    style={{ 
+                      filter: 'brightness(0)',
+                      colorScheme: 'dark'
+                    }}
+                  />
+                </div>
               </div>
               <p className="font-body leading-6 text-md text-gray-600 dark:text-gray-400 font-extralight max-w-lg" style={{ fontFamily: 'var(--font-body)' }}>
-                Born from passion, fuelled by youth we bring flare, edge, and a new wave of barber culture to the city of Melbourne. Every service is a tailored experience built around you, truly making it 'yours'.
+                UR Studio: Born from passion, fuelled by youth we - bring flare, edge, and a new wave of barber culture to the city of Melbourne. Every service is a tailored experience built around you, truly making it 'yours'.
               </p>
             </div>
 
