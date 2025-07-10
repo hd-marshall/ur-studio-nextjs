@@ -22,7 +22,7 @@ export default function About() {
     <section id="about" className="pb-12 pt-24 bg-white dark:bg-black">
 
       {/* Team */}
-      <div className="text-center mb-16" id="team-members" >
+      <div className="text-center mb-16 max-w-[90%] mx-auto" id="team-members" >
         <p className="text-sm tracking-[0.3em] text-gray-600 dark:text-gray-400 font-light mb-4">MEET THE TEAM</p>
         <h2 className="text-5xl font-extralight text-black dark:text-white mb-6">MASTER CRAFTSMEN</h2>
         <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-light leading-6" style={{ fontFamily: 'var(--font-body)' }}>

@@ -17,6 +17,7 @@ export default function Header() {
     { name: "About Us", href: "#about" },
     { name: "Services", href: "#services" },
     { name: "Gallery", href: "#gallery" },
+    { name: "Awards", href: "#awards"},
     { name: "Contact", href: "#contact" },
     { name: "Policy", href: "/booking-policy"}
   ]
