@@ -32,7 +32,7 @@ export default function Footer() {
   }
 
   const handleBookingClick = () => {
-    window.open('https://www.fresha.com/a/milo-le-hair-melbourne-377-little-bourke-street-rtna1lwa/booking', '_blank')
+    window.open('https://www.fresha.com/book-now/milo-le-hair-uk1gzgvd/all-offer?id=2653044&share&pId=1401362', '_blank')
   }
 
   const handlePageNavigation = (path: string) => {
