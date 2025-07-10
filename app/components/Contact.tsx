@@ -6,7 +6,7 @@ export default function Contact() {
     {
       icon: <MapPin className="h-6 w-6" />,
       title: "Location",
-      details: ["61A Peel Street", "Melbourne CBD", "Victoria 3000"],
+      details: ["61A Peel Street", "Melbourne CBD", "Victoria 3003"],
     },
     {
       icon: <Phone className="h-6 w-6" />,
