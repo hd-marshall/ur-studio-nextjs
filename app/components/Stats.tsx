@@ -126,7 +126,7 @@ export default function Awards() {
   return (
     <section 
       id="awards"
-      className="py-16" style={{ backgroundColor: '#F5F5F5' }}
+      className="pb-8 pt-16" style={{ backgroundColor: '#F5F5F5' }}
     >
       <div className="container mx-auto px-6">
         
@@ -201,7 +201,7 @@ export default function Awards() {
         </div>
 
         {/* Stats Section */}
-        <div className="bg-white rounded-lg p-8 shadow-sm">
+        {/* <div className="bg-white rounded-lg p-8 shadow-sm">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <div key={index} className="text-center group">
@@ -217,7 +217,7 @@ export default function Awards() {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
       
       <style jsx>{`
