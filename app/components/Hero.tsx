@@ -29,7 +29,7 @@ export default function Hero() {
                 </div>
               </div>
               <p className="font-body leading-6 text-md text-gray-600 dark:text-gray-400 font-extralight max-w-lg text-center lg:text-left mx-auto lg:mx-0" style={{ fontFamily: 'var(--font-body)' }}>
-                UR Studio: Born from passion, fuelled by youth we - bring flare, edge, and a new wave of barber culture to the city of Melbourne. Every service is a tailored experience built around you, truly making it 'yours'.
+                UR Studio; Born from passion, fuelled by youth - we bring flare, edge, and a new wave of barber culture to the city of Melbourne. Every service is a tailored experience built around you, truly making it 'yours'.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
