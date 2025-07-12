@@ -82,6 +82,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`scroll-smooth overflow-x-hidden ${customFont.variable}`} suppressHydrationWarning>
       <head>
+        <meta name="google-site-verification" content="Q21_LKHWdRir-tJYF9VfjaEsSk3J-4ifw0t0MtMBXIg" />
         {/* Sitemap */}
         <link 
           rel="sitemap" 
