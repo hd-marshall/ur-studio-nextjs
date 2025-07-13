@@ -8,6 +8,8 @@ import { Providers } from "./providers"
 import Header from "./components/Header"
 import Footer from "./components/Footer"
 
+import Breadcrumbs from './components/Breadcrumbs';
+
 const customFont = localFont({
   src: '../public/fonts/Nitti-Normal.ttf',
   variable: '--font-body',
@@ -141,8 +143,11 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.className} overflow-x-hidden max-w-[100vw] w-full`}>
+
         <div className="min-h-screen w-full max-w-[100vw] overflow-x-hidden">
           <Header />
+          
+          <Breadcrumbs />
           
           <main className="w-full max-w-[100vw] overflow-x-hidden">
             <Providers>
