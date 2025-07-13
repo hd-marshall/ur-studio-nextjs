@@ -84,7 +84,7 @@ export default function Hero() {
           <div className="relative">
             <div className="aspect-[4/5] relative overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800">
               <img
-                src="/images/hero/hero.png"
+                src="/images/hero/hero.webp"
                 alt="Master barber at work"
                 className="w-full h-full object-cover"
               />
