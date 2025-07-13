@@ -5,7 +5,7 @@ export default function About() {
       title: "Senior Barber",
       experience: "4 years",
       specialty: "Precision cuts & traditional techniques",
-      image: "/images/about/milo-headshot.JPG",
+      image: "/images/about/milo-headshot.webp",
       story: "",
     },
     {
@@ -13,7 +13,7 @@ export default function About() {
       title: "Senior Barber",
       experience: "3 years",
       specialty: "Modern fades & beard sculpting",
-      image: "/images/about/xian-headshot.png",
+      image: "/images/about/xian-headshot.webp",
       story: "",
     },
   ]
@@ -47,7 +47,7 @@ export default function About() {
             <div className="relative">
               <div className="aspect-[4/5] bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800 overflow-hidden">
                 <img
-                  src="/images/about/milo-compeition.jpg"
+                  src="/images/about/milo-compeition.webp"
                   alt="Milo Nationals Comp"
                   className="w-full h-full object-cover"
                 />
@@ -98,7 +98,7 @@ export default function About() {
             <div className="relative">
               <div className="aspect-[4/5] bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800 overflow-hidden">
                 <img
-                  src="/images/about/milo-compeition.jpg"
+                  src="/images/about/milo-compeition.webp"
                   alt="Milo Nationals Comp"
                   className="w-full h-full object-cover"
                 />
@@ -125,7 +125,7 @@ export default function About() {
             <div className="relative">
               <div className="aspect-[4/5] bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800 overflow-hidden">
                 <img
-                  src="/images/about/xian-headshot.png"
+                  src="/images/about/xian-headshot.webp"
                   alt="Xian-Ri About Me"
                   className="w-full h-full object-cover"
                 />
@@ -155,7 +155,7 @@ export default function About() {
             <div className="relative">
               <div className="aspect-[4/5] bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800 overflow-hidden">
                 <img
-                  src="/images/about/xian-headshot.png"
+                  src="/images/about/xian-headshot.webp"
                   alt="Xian-Ri About Me"
                   className="w-full h-full object-cover"
                 />
