@@ -1,6 +1,6 @@
 {
-  "name": "MyWebSite",
-  "short_name": "MySite",
+  "name": "URStudio",
+  "short_name": "URStudio",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
