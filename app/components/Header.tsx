@@ -60,7 +60,7 @@ export default function Header() {
   }
 
   const handleBookingClick = () => {
-    window.open('https://www.fresha.com/a/ur-studio-melbourne-61a-peel-street-lmpkp2dv/all-offer?venue=true', '_blank')
+    window.open('https://www.fresha.com/a/ur-studio-melbourne-61a-peel-street-lmpkp2dv/booking?menu=true&multi=true&pId=1401362&cartId=a3f18a4e-a008-4a7e-995c-bd998ed45476', '_blank')
     setIsMenuOpen(false) // Close mobile menu after clicking
   }
 

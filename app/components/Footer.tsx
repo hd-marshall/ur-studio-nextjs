@@ -32,7 +32,7 @@ export default function Footer() {
   }
 
   const handleBookingClick = () => {
-    window.open('https://www.fresha.com/book-now/milo-le-hair-uk1gzgvd/all-offer?id=2653044&share&pId=1401362', '_blank')
+    window.open('https://www.fresha.com/a/ur-studio-melbourne-61a-peel-street-lmpkp2dv/booking?menu=true&multi=true&pId=1401362&cartId=a3f18a4e-a008-4a7e-995c-bd998ed45476', '_blank')
   }
 
   const handlePageNavigation = (path: string) => {
