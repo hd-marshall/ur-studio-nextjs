@@ -57,7 +57,7 @@ export default function About() {
             {/* Mobile: Text Third */}
             <div className="text-md space-y-6 text-gray-700 dark:text-gray-600 leading-6 font-extralight" style={{ fontFamily: 'var(--font-body)' }}>
               <p className="text-md">
-                I'm Milo Le, co-founder of Ur Studio. I'm a multiple award-winning barber, and a passionate creative at heart.
+                I'm Milo Le, co-founder of UR Studio. I'm a multiple award-winning barber, and a passionate creative at heart.
               </p>
               <p>
                 My journey began in the world of visual art, I graduated with a major in Graphic Design but I chose to follow a different path: barbering. For me, cutting hair became a way to combine precision, visual balance and personal expression in a more human, hands-on way.
@@ -82,7 +82,7 @@ export default function About() {
               </div>
               <div className="text-md space-y-6 text-gray-700 dark:text-gray-600 leading-6 font-extralight" style={{ fontFamily: 'var(--font-body)' }}>
                 <p className="text-md">
-                  I'm Milo Le, co-founder of Ur Studio. I'm a multiple award-winning barber, and a passionate creative at heart.
+                  I'm Milo Le, co-founder of UR Studio. I'm a multiple award-winning barber, and a passionate creative at heart.
                 </p>
                 <p>
                   My journey began in the world of visual art, I graduated with a major in Graphic Design but I chose to follow a different path: barbering. For me, cutting hair became a way to combine precision, visual balance and personal expression in a more human, hands-on way.

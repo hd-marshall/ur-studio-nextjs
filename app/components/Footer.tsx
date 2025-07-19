@@ -160,10 +160,10 @@ export default function Footer() {
                 <p>West Melbourne, VIC 3003</p>
               </button>
               <a 
-                href="tel:0447 607 947" 
+                href="tel:0435 342 989" 
                 className="hover:text-white cursor-pointer transition-colors block"
               >
-                0447 607 947
+                0435 342 989
               </a>
               <a 
                 href="mailto:urstudiomelb@gmail.com" 

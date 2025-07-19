@@ -11,8 +11,8 @@ export default function Contact() {
     {
       icon: <Phone className="h-6 w-6" />,
       title: "Contact",
-      details: ["0447 607 947", "Available during working hours."],
-      href: "tel:0447607947",
+      details: ["0435 342 989", "Available during working hours."],
+      href: "tel:0435342989",
       clickable: true,
     },
     {
