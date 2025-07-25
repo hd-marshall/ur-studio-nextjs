@@ -1,4 +1,4 @@
-import { CheckCircle, XCircle, Clock, AlertTriangle } from "lucide-react"
+import { CheckCircle, XCircle, Clock, AlertTriangle, DollarSign } from "lucide-react"
 
 export default function BookingPolicy() {
   return (
@@ -16,6 +16,7 @@ export default function BookingPolicy() {
 
         {/* Policy Content */}
         <div className="space-y-12">
+
           {/* Free Cancellation */}
           <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-8">
             <div className="flex items-start space-x-4">
@@ -67,6 +68,21 @@ export default function BookingPolicy() {
             </div>
           </div>
 
+          {/* Surcharges */}
+          <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-8">
+            <div className="flex items-start space-x-4">
+              <DollarSign className="h-8 w-8 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-1" />
+              <div>
+                <h2 className="text-2xl font-light text-blue-800 dark:text-blue-200 mb-4">
+                  Additional Charges
+                </h2>
+                <p className="text-blue-700 dark:text-blue-300 text-md leading-relaxed" style={{ fontFamily: 'var(--font-body)' }}>
+                  <strong>10% weekend surcharge</strong> | <strong>15% holiday surcharge</strong>
+                </p>
+              </div>
+            </div>
+          </div>
+
           {/* Our Commitment */}
           <div className="bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800 rounded-lg p-8">
             <div className="flex items-start space-x-4">
@@ -92,18 +108,18 @@ export default function BookingPolicy() {
           <div className="space-y-2">
             <p>
               <a 
-                href="mailto:info@urstudio.com" 
+                href="mailto:urstudiomelb@gmail.com" 
                 className="text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors font-light"
               >
-                info@urstudio.com
+                urstudiomelb@gmail.com
               </a>
             </p>
             <p>
               <a 
-                href="tel:+61PLACEHOLDER" 
+                href="tel:+0435 342 989" 
                 className="text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors font-light"
               >
-                PLACEHOLDER PHONE NO.
+                0435 342 989
               </a>
             </p>
           </div>
