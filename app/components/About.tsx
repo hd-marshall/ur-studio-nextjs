@@ -16,6 +16,14 @@ export default function About() {
       image: "/images/about/xian-headshot.webp",
       story: "",
     },
+    {
+      name: "Caden",
+      title: "Senior Barber",
+      experience: "10+ years",
+      specialty: "Creative boundaries & artistic canvas",
+      image: "/images/about/caden-headshot.webp",
+      story: "",
+    },
   ]
 
   return (
@@ -182,6 +190,78 @@ export default function About() {
                 <p>
                   Through this balance and creative expression, I aim to give my clients haircuts that truly align with their identity—so they can express themselves in their most personal way.
                 </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="container mx-auto px-6">
+        {/* Caden's Story - Text Left, Image Right on Desktop */}
+        <div className="mb-24">
+          {/* Mobile Layout - Block Stack */}
+          <div className="lg:hidden space-y-8">
+            {/* Mobile: Name First */}
+            <div className="text-center">
+              <p className="text-sm tracking-[0.3em] text-gray-600 dark:text-gray-600 font-light mb-4">THIS IS ME</p>
+              <h2 className="text-5xl font-extralight text-black dark:text-white mb-8">
+                CADEN
+              </h2>
+            </div>
+            
+            {/* Mobile: Picture Second */}
+            <div className="relative">
+              <div className="aspect-[4/5] bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800 overflow-hidden">
+                <img
+                  src="/images/about/caden-headshot.webp"
+                  alt="Caden Underground Artist"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+            
+            {/* Mobile: Text Third */}
+            <div className="text-md space-y-6 text-gray-700 dark:text-gray-600 leading-6 font-extralight" style={{ fontFamily: 'var(--font-body)' }}>
+              <p className="text-md">
+                I'm Caden, Senior Barber at UR Studio. Originally from New Zealand, I am an underground artist and barber with over a decade of industry experience.
+              </p>
+              <p>
+                Widely recognised for pushing creative boundaries, I have developed a distinctive style that merges visual art with hairstyling—blending modern fades, bleach patterns, and vibrant dye work to transform hair into a true artistic canvas.
+              </p>
+              <p>
+                To me, barbering is more than a trade; it is an art form without limitations. It is a universal craft that allows me to mould and shape the community, creating a visual expression of individuality and self-identity.
+              </p>
+            </div>
+          </div>
+
+          {/* Desktop Layout - Side by Side */}
+          <div className="hidden lg:grid lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8">
+              <div>
+                <p className="text-sm tracking-[0.3em] text-gray-600 dark:text-gray-600 font-light mb-4">UNDERGROUND ARTIST</p>
+                <h2 className="text-5xl font-extralight text-black dark:text-white mb-8">
+                  CADEN
+                </h2>
+              </div>
+              <div className="text-md space-y-6 text-gray-700 dark:text-gray-600 leading-6 font-extralight" style={{ fontFamily: 'var(--font-body)' }}>
+                <p className="text-md">
+                  I'm Caden, Senior Barber at UR Studio. Originally from New Zealand, I am an underground artist and barber with over a decade of industry experience.
+                </p>
+                <p>
+                  Widely recognised for pushing creative boundaries, I have developed a distinctive style that merges visual art with hairstyling—blending modern fades, bleach patterns, and vibrant dye work to transform hair into a true artistic canvas.
+                </p>
+                <p>
+                  To me, barbering is more than a trade; it is an art form without limitations. It is a universal craft that allows me to mould and shape the community, creating a visual expression of individuality and self-identity.
+                </p>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="aspect-[4/5] bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800 overflow-hidden">
+                <img
+                  src="/images/about/caden-headshot.webp"
+                  alt="Caden Underground Artist"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </div>
