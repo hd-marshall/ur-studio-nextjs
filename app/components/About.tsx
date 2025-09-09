@@ -17,7 +17,7 @@ export default function About() {
       story: "",
     },
     {
-      name: "Caden",
+      name: "Caden Teau",
       title: "Senior Barber",
       experience: "10+ years",
       specialty: "Creative boundaries & artistic canvas",
@@ -205,7 +205,7 @@ export default function About() {
             <div className="text-center">
               <p className="text-sm tracking-[0.3em] text-gray-600 dark:text-gray-600 font-light mb-4">THIS IS ME</p>
               <h2 className="text-5xl font-extralight text-black dark:text-white mb-8">
-                CADEN
+                CADEN TEAU
               </h2>
             </div>
             
@@ -238,9 +238,9 @@ export default function About() {
           <div className="hidden lg:grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
               <div>
-                <p className="text-sm tracking-[0.3em] text-gray-600 dark:text-gray-600 font-light mb-4">UNDERGROUND ARTIST</p>
+                <p className="text-sm tracking-[0.3em] text-gray-600 dark:text-gray-600 font-light mb-4">THIS IS ME</p>
                 <h2 className="text-5xl font-extralight text-black dark:text-white mb-8">
-                  CADEN
+                  CADEN TEAU
                 </h2>
               </div>
               <div className="text-md space-y-6 text-gray-700 dark:text-gray-600 leading-6 font-extralight" style={{ fontFamily: 'var(--font-body)' }}>
