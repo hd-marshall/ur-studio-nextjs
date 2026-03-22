@@ -160,10 +160,8 @@ export function AnimatedSVG({
   }, [svgContent, colorWaveDelayMs, staggerMs])
 
   return (
-    <div
-      ref={containerRef}
-      className={className}
-      dangerouslySetInnerHTML={{ __html: svgContent }}
-    />
+    <div ref={containerRef} className={className} style={svgContent ? undefined : { aspectRatio: "4/5" }}>
+      {svgContent && <div dangerouslySetInnerHTML={{ __html: svgContent }} />}
+    </div>
   )
 }
