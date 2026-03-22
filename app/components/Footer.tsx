@@ -100,6 +100,22 @@ export default function Footer() {
               </li>
               <li>
                 <button 
+                  onClick={() => scrollToSection('#awards')}
+                  className="hover:text-white cursor-pointer transition-colors text-left"
+                >
+                  Awards
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => handlePageNavigation('/education')}
+                  className="hover:text-white cursor-pointer transition-colors text-left"
+                >
+                  Education
+                </button>
+              </li>
+              <li>
+                <button 
                   onClick={() => scrollToSection('#contact')}
                   className="hover:text-white cursor-pointer transition-colors text-left"
                 >
