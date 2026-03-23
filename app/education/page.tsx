@@ -1,29 +1,9 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useRef, useState } from "react"
 import { AnimatedSVG } from "@/app/components/AnimatedSVG"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, MapPin, Calendar, ChevronLeft, ChevronRight } from "lucide-react"
-
-function useScrollReveal() {
-  const ref = useRef<HTMLDivElement>(null)
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          el.classList.add("visible")
-          observer.disconnect()
-        }
-      },
-      { threshold: 0.15 }
-    )
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [])
-  return ref
-}
 
 const SLIDES = [
   "/images/education/hero-education.svg",
@@ -132,20 +112,9 @@ function SVGCarousel() {
 }
 
 export default function EducationPage() {
-  const eventRef = useScrollReveal()
-
   return (
     <main className="min-h-screen bg-white dark:bg-black text-black dark:text-white">
       <style>{`
-        .reveal {
-          opacity: 0;
-          transform: translateY(32px);
-          transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-        }
-        .reveal.visible {
-          opacity: 1;
-          transform: translateY(0);
-        }
         /* On desktop, make inline SVGs scale to fit the 85vh container */
         @media (min-width: 768px) {
           .svg-carousel-slide > div,
@@ -168,7 +137,7 @@ export default function EducationPage() {
 
         {/* Event info */}
         <div className="max-w-2xl mx-auto px-6 mt-16">
-          <div ref={eventRef} className="reveal space-y-10">
+          <div className="space-y-10">
 
             {/* When & Where */}
             <div className="space-y-3">
