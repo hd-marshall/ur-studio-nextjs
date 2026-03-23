@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { AnimatedSVG } from "@/app/components/AnimatedSVG"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, MapPin, Calendar, ChevronLeft, ChevronRight } from "lucide-react"
@@ -12,80 +12,58 @@ const SLIDES = [
 ]
 
 function SVGCarousel() {
-  const [current, setCurrent] = useState(0)
-  const [dragOffset, setDragOffset] = useState(0)
-  const [isDragging, setIsDragging] = useState(false)
-  const touchStartX = useRef<number | null>(null)
-  const trackRef = useRef<HTMLDivElement>(null)
+  const scrollRef = useRef<HTMLDivElement>(null)
+  const [activeIndex, setActiveIndex] = useState(0)
 
-  const prev = () => setCurrent((c) => (c - 1 + SLIDES.length) % SLIDES.length)
-  const next = () => setCurrent((c) => (c + 1) % SLIDES.length)
+  // Track which slide has snapped into view via native scroll
+  useEffect(() => {
+    const el = scrollRef.current
+    if (!el) return
+    const handleScroll = () => {
+      const index = Math.round(el.scrollLeft / el.clientWidth)
+      setActiveIndex(Math.min(index, SLIDES.length - 1))
+    }
+    el.addEventListener("scroll", handleScroll, { passive: true })
+    return () => el.removeEventListener("scroll", handleScroll)
+  }, [])
 
-  const onTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX
-    setIsDragging(true)
-    setDragOffset(0)
+  const scrollTo = (index: number) => {
+    const el = scrollRef.current
+    if (!el) return
+    el.scrollTo({ left: index * el.clientWidth, behavior: "smooth" })
   }
-
-  const onTouchMove = (e: React.TouchEvent) => {
-    if (touchStartX.current === null) return
-    setDragOffset(e.touches[0].clientX - touchStartX.current)
-  }
-
-  const onTouchEnd = () => {
-    if (touchStartX.current === null) return
-    const width = trackRef.current?.offsetWidth ?? window.innerWidth
-    const threshold = width * 0.25
-    if (dragOffset < -threshold) next()
-    else if (dragOffset > threshold) prev()
-    touchStartX.current = null
-    setDragOffset(0)
-    setIsDragging(false)
-  }
-
-  const translateX = `calc(-${current * 100}% + ${dragOffset}px)`
 
   return (
     <div className="relative select-none">
-      {/* Slides */}
+      {/* Slides — native scroll with CSS snap */}
       <div
-        ref={trackRef}
-        className="overflow-hidden md:h-[85vh]"
-        onTouchStart={onTouchStart}
-        onTouchMove={onTouchMove}
-        onTouchEnd={onTouchEnd}
+        ref={scrollRef}
+        className="flex overflow-x-auto snap-x snap-mandatory md:h-[85vh]"
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none" } as React.CSSProperties}
       >
-        <div
-          className="flex h-full"
-          style={{
-            transform: `translateX(${translateX})`,
-            transition: isDragging ? "none" : "transform 0.5s ease-in-out",
-          }}
-        >
-          {SLIDES.map((src, i) => (
-            <div key={src} className="svg-carousel-slide w-full shrink-0 md:flex md:items-center md:justify-center md:h-full">
-              <AnimatedSVG
-                src={src}
-                className="w-full block md:h-full"
-                colorWaveDelayMs={400}
-                staggerMs={120}
-                isActive={current === i}
-              />
-            </div>
-          ))}
-        </div>
+        {SLIDES.map((src, i) => (
+          <div key={src} className="svg-carousel-slide snap-start w-full shrink-0 md:flex md:items-center md:justify-center md:h-full">
+            <AnimatedSVG
+              src={src}
+              className="w-full block md:h-full"
+              colorWaveDelayMs={400}
+              staggerMs={120}
+              isActive={activeIndex === i}
+            />
+          </div>
+        ))}
       </div>
 
       {/* Prev / Next buttons */}
       <button
-        onClick={prev}
+        onClick={() => scrollTo(Math.max(0, activeIndex - 1))}
         aria-label="Previous"
         className="absolute left-2 top-1/2 -translate-y-1/2 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-white/80 dark:bg-black/60 shadow hover:bg-white dark:hover:bg-black transition-colors"
       >
         <ChevronLeft className="h-5 w-5" />
       </button>
       <button
-        onClick={next}
+        onClick={() => scrollTo(Math.min(SLIDES.length - 1, activeIndex + 1))}
         aria-label="Next"
         className="absolute right-2 top-1/2 -translate-y-1/2 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-white/80 dark:bg-black/60 shadow hover:bg-white dark:hover:bg-black transition-colors"
       >
@@ -97,10 +75,10 @@ function SVGCarousel() {
         {SLIDES.map((_, i) => (
           <button
             key={i}
-            onClick={() => setCurrent(i)}
+            onClick={() => scrollTo(i)}
             aria-label={`Go to slide ${i + 1}`}
             className={`h-2 rounded-full transition-all duration-300 ${
-              i === current
+              i === activeIndex
                 ? "w-6 bg-black dark:bg-white"
                 : "w-2 bg-gray-300 dark:bg-gray-600"
             }`}
