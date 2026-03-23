@@ -104,28 +104,27 @@ export function AnimatedSVG({
     }
 
     const hide = () => {
-      wrappers.forEach((w, i) => {
-        const isText = allTargets[i].tagName.toLowerCase() === "text"
+      wrappers.forEach((w) => {
         w.style.transition = "none"
         w.style.opacity = "0"
-        w.style.transform = isText ? "translateY(20px)" : "translateY(0)"
+        w.style.transform = "translateY(24px)"
       })
     }
 
     // ── Store the animate fn in a ref so both effects can call it ─────────────
     animateRef.current = () => {
       hide()
+      // Force a synchronous reflow so the browser commits the hidden state
+      // before we apply the transition. Reading getBoundingClientRect() on any
+      // element in the subtree is enough to flush pending style changes.
+      // This is more reliable than double-rAF during scroll compositing.
+      wrappers[0]?.getBoundingClientRect()
       requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          wrappers.forEach((w, i) => {
-            const isText = allTargets[i].tagName.toLowerCase() === "text"
-            const delay = delays.get(w) ?? 0
-            w.style.transition = isText
-              ? `opacity 0.65s ease-out ${delay}ms, transform 0.65s ease-out ${delay}ms`
-              : `opacity 0.65s ease-out ${delay}ms`
-            w.style.opacity = "1"
-            w.style.transform = "translateY(0)"
-          })
+        wrappers.forEach((w) => {
+          const delay = delays.get(w) ?? 0
+          w.style.transition = `opacity 0.7s ease-out ${delay}ms, transform 0.7s ease-out ${delay}ms`
+          w.style.opacity = "1"
+          w.style.transform = "translateY(0)"
         })
       })
     }

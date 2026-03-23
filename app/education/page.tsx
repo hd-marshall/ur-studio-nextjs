@@ -15,16 +15,26 @@ function SVGCarousel() {
   const scrollRef = useRef<HTMLDivElement>(null)
   const [activeIndex, setActiveIndex] = useState(0)
 
-  // Track which slide has snapped into view via native scroll
+  // Update activeIndex only after the snap animation has fully settled.
+  // scrollend fires exactly when snap completes; fall back to debounce for older browsers.
   useEffect(() => {
     const el = scrollRef.current
     if (!el) return
-    const handleScroll = () => {
+
+    const updateIndex = () => {
       const index = Math.round(el.scrollLeft / el.clientWidth)
       setActiveIndex(Math.min(index, SLIDES.length - 1))
     }
-    el.addEventListener("scroll", handleScroll, { passive: true })
-    return () => el.removeEventListener("scroll", handleScroll)
+
+    if ("onscrollend" in window) {
+      el.addEventListener("scrollend", updateIndex)
+      return () => el.removeEventListener("scrollend", updateIndex)
+    } else {
+      let t: ReturnType<typeof setTimeout>
+      const onScroll = () => { clearTimeout(t); t = setTimeout(updateIndex, 150) }
+      el.addEventListener("scroll", onScroll, { passive: true })
+      return () => { el.removeEventListener("scroll", onScroll); clearTimeout(t) }
+    }
   }, [])
 
   const scrollTo = (index: number) => {
@@ -58,14 +68,14 @@ function SVGCarousel() {
       <button
         onClick={() => scrollTo(Math.max(0, activeIndex - 1))}
         aria-label="Previous"
-        className="absolute left-2 top-1/2 -translate-y-1/2 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-white/80 dark:bg-black/60 shadow hover:bg-white dark:hover:bg-black transition-colors"
+        className="hidden md:flex absolute left-2 top-1/2 -translate-y-1/2 z-10 h-9 w-9 items-center justify-center rounded-full bg-white/80 dark:bg-black/60 shadow hover:bg-white dark:hover:bg-black transition-colors"
       >
         <ChevronLeft className="h-5 w-5" />
       </button>
       <button
         onClick={() => scrollTo(Math.min(SLIDES.length - 1, activeIndex + 1))}
         aria-label="Next"
-        className="absolute right-2 top-1/2 -translate-y-1/2 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-white/80 dark:bg-black/60 shadow hover:bg-white dark:hover:bg-black transition-colors"
+        className="hidden md:flex absolute right-2 top-1/2 -translate-y-1/2 z-10 h-9 w-9 items-center justify-center rounded-full bg-white/80 dark:bg-black/60 shadow hover:bg-white dark:hover:bg-black transition-colors"
       >
         <ChevronRight className="h-5 w-5" />
       </button>
@@ -108,7 +118,7 @@ export default function EducationPage() {
         }
       `}</style>
 
-      <section className="pt-12 pb-16">
+      <section className="pt-10 pb-16">
         <div className="max-w-4xl mx-auto">
           <SVGCarousel />
         </div>
