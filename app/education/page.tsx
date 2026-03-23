@@ -1,9 +1,9 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { AnimatedSVG } from "@/app/components/AnimatedSVG"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, MapPin, Calendar } from "lucide-react"
+import { ArrowRight, MapPin, Calendar, ChevronLeft, ChevronRight } from "lucide-react"
 
 function useScrollReveal() {
   const ref = useRef<HTMLDivElement>(null)
@@ -25,6 +25,112 @@ function useScrollReveal() {
   return ref
 }
 
+const SLIDES = [
+  "/images/education/hero-education.svg",
+  "/images/education/agenda-education.svg",
+  "/images/education/teaching-education.svg",
+]
+
+function SVGCarousel() {
+  const [current, setCurrent] = useState(0)
+  const [dragOffset, setDragOffset] = useState(0)
+  const [isDragging, setIsDragging] = useState(false)
+  const touchStartX = useRef<number | null>(null)
+  const trackRef = useRef<HTMLDivElement>(null)
+
+  const prev = () => setCurrent((c) => (c - 1 + SLIDES.length) % SLIDES.length)
+  const next = () => setCurrent((c) => (c + 1) % SLIDES.length)
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX
+    setIsDragging(true)
+    setDragOffset(0)
+  }
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return
+    setDragOffset(e.touches[0].clientX - touchStartX.current)
+  }
+
+  const onTouchEnd = () => {
+    if (touchStartX.current === null) return
+    const width = trackRef.current?.offsetWidth ?? window.innerWidth
+    const threshold = width * 0.25
+    if (dragOffset < -threshold) next()
+    else if (dragOffset > threshold) prev()
+    touchStartX.current = null
+    setDragOffset(0)
+    setIsDragging(false)
+  }
+
+  const translateX = `calc(-${current * 100}% + ${dragOffset}px)`
+
+  return (
+    <div className="relative select-none">
+      {/* Slides */}
+      <div
+        ref={trackRef}
+        className="overflow-hidden md:h-[85vh]"
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+      >
+        <div
+          className="flex h-full"
+          style={{
+            transform: `translateX(${translateX})`,
+            transition: isDragging ? "none" : "transform 0.5s ease-in-out",
+          }}
+        >
+          {SLIDES.map((src, i) => (
+            <div key={src} className="svg-carousel-slide w-full shrink-0 md:flex md:items-center md:justify-center md:h-full">
+              <AnimatedSVG
+                src={src}
+                className="w-full block md:h-full"
+                colorWaveDelayMs={400}
+                staggerMs={120}
+                isActive={current === i}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Prev / Next buttons */}
+      <button
+        onClick={prev}
+        aria-label="Previous"
+        className="absolute left-2 top-1/2 -translate-y-1/2 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-white/80 dark:bg-black/60 shadow hover:bg-white dark:hover:bg-black transition-colors"
+      >
+        <ChevronLeft className="h-5 w-5" />
+      </button>
+      <button
+        onClick={next}
+        aria-label="Next"
+        className="absolute right-2 top-1/2 -translate-y-1/2 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-white/80 dark:bg-black/60 shadow hover:bg-white dark:hover:bg-black transition-colors"
+      >
+        <ChevronRight className="h-5 w-5" />
+      </button>
+
+      {/* Dot indicators */}
+      <div className="mt-4 flex justify-center gap-2">
+        {SLIDES.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            aria-label={`Go to slide ${i + 1}`}
+            className={`h-2 rounded-full transition-all duration-300 ${
+              i === current
+                ? "w-6 bg-black dark:bg-white"
+                : "w-2 bg-gray-300 dark:bg-gray-600"
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export default function EducationPage() {
   const eventRef = useScrollReveal()
 
@@ -40,29 +146,24 @@ export default function EducationPage() {
           opacity: 1;
           transform: translateY(0);
         }
+        /* On desktop, make inline SVGs scale to fit the 85vh container */
+        @media (min-width: 768px) {
+          .svg-carousel-slide > div,
+          .svg-carousel-slide > div > div {
+            height: 100%;
+          }
+          .svg-carousel-slide svg {
+            height: 100%;
+            width: auto;
+            display: block;
+            margin: 0 auto;
+          }
+        }
       `}</style>
 
       <section className="pt-12 pb-16">
-        {/* SVGs stack with zero gap — full bleed on mobile, contained on md+ */}
         <div className="max-w-4xl mx-auto">
-          <AnimatedSVG
-            src="/images/education/hero-education.svg"
-            className="w-full block"
-            colorWaveDelayMs={400}
-            staggerMs={120}
-          />
-          <AnimatedSVG
-            src="/images/education/agenda-education.svg"
-            className="w-full block"
-            colorWaveDelayMs={400}
-            staggerMs={120}
-          />
-          <AnimatedSVG
-            src="/images/education/teaching-education.svg"
-            className="w-full block"
-            colorWaveDelayMs={400}
-            staggerMs={120}
-          />
+          <SVGCarousel />
         </div>
 
         {/* Event info */}
@@ -75,7 +176,7 @@ export default function EducationPage() {
                 WHEN &amp; WHERE
               </p>
               <p className="text-5xl font-extralight text-black dark:text-white mb-8">
-                UR Studio - May 4th 
+                UR Studio - May 4th
               </p>
               <a
                 href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=UR+Studio+Look+%26+Learn+Seminar&dates=20260504T093000/20260504T163000&location=61A+Peel+Street+West+Melbourne+VIC+3003"
