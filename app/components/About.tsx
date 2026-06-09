@@ -16,6 +16,14 @@ export default function About() {
       image: "/images/about/xian-headshot.webp",
       story: "",
     },
+    {
+      name: "Bendon (Ben) Heung",
+      title: "Barber",
+      experience: "",
+      specialty: "Individuality & self-expression",
+      image: "/images/about/bradon-headshot.jpeg",
+      story: "",
+    },
   ]
 
   return (
@@ -182,6 +190,84 @@ export default function About() {
                 <p>
                   Through this balance and creative expression, I aim to give my clients haircuts that truly align with their identity—so they can express themselves in their most personal way.
                 </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="container mx-auto px-6">
+        {/* Bendon's Story - Text Left, Image Right on Desktop */}
+        <div className="mb-24">
+          {/* Mobile Layout - Block Stack */}
+          <div className="lg:hidden space-y-8">
+            {/* Mobile: Name First */}
+            <div className="text-center">
+              <p className="text-sm tracking-[0.3em] text-gray-600 dark:text-gray-600 font-light mb-4">MY STORY</p>
+              <h2 className="text-5xl font-extralight text-black dark:text-white mb-8">
+                BENDON HEUNG
+              </h2>
+            </div>
+
+            {/* Mobile: Picture Second */}
+            <div className="relative">
+              <div className="aspect-[4/5] bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800 overflow-hidden">
+                <img
+                  src="/images/about/bradon-headshot.jpeg"
+                  alt="Bendon Heung"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+
+            {/* Mobile: Text Third */}
+            <div className="text-md space-y-6 text-gray-700 dark:text-gray-600 leading-6 font-extralight" style={{ fontFamily: 'var(--font-body)' }}>
+              <p className="text-md">
+                I'm Bendon (Ben) Heung, member of UR Studio. Born and raised in Melbourne, I'm inspired by the city and the creatives around me, dedicating myself to helping pioneer individuality.
+              </p>
+              <p>
+                In 2022, I fell in love with the seamless blend of creativity and craftsmanship within barbering, pursuing it with passion and quickly finding it second nature.
+              </p>
+              <p>
+                Within today's society, self-expression and identity can often feel confined by certain expectations. As a UR barber, I aim to create a safe space where individuals can freely express themselves and feel comfortable in my chair. Every cut is approached with intent and purpose, tailoring each haircut to reflect a person's unique identity.
+              </p>
+              <p>
+                I dedicate myself to continuously refining the art and craft of barbering, not only to celebrate individuality, but to grow alongside every person I inspire.
+              </p>
+            </div>
+          </div>
+
+          {/* Desktop Layout - Side by Side */}
+          <div className="hidden lg:grid lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8">
+              <div>
+                <p className="text-sm tracking-[0.3em] text-gray-600 dark:text-gray-600 font-light mb-4">MY STORY</p>
+                <h2 className="text-5xl font-extralight text-black dark:text-white mb-8">
+                  BENDON HEUNG
+                </h2>
+              </div>
+              <div className="text-md space-y-6 text-gray-700 dark:text-gray-600 leading-6 font-extralight" style={{ fontFamily: 'var(--font-body)' }}>
+                <p className="text-md">
+                  I'm Bendon (Ben) Heung, member of UR Studio. Born and raised in Melbourne, I'm inspired by the city and the creatives around me, dedicating myself to helping pioneer individuality.
+                </p>
+                <p>
+                  In 2022, I fell in love with the seamless blend of creativity and craftsmanship within barbering, pursuing it with passion and quickly finding it second nature.
+                </p>
+                <p>
+                  Within today's society, self-expression and identity can often feel confined by certain expectations. As a UR barber, I aim to create a safe space where individuals can freely express themselves and feel comfortable in my chair. Every cut is approached with intent and purpose, tailoring each haircut to reflect a person's unique identity.
+                </p>
+                <p>
+                  I dedicate myself to continuously refining the art and craft of barbering, not only to celebrate individuality, but to grow alongside every person I inspire.
+                </p>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="aspect-[4/5] bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800 overflow-hidden">
+                <img
+                  src="/images/about/bradon-headshot.jpeg"
+                  alt="Bendon Heung"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </div>
