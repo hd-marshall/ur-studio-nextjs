@@ -1,99 +1,86 @@
 "use client"
 
-import { Award, Trophy, Medal, Star, Crown, Users, Clock } from "lucide-react"
+import { Award, Trophy, Medal, Star, Crown } from "lucide-react"
 import { useState, useRef, useEffect } from "react"
 
-interface AwardType {
-  icon: React.ReactNode
-  title: string
-  achievement: string
-  year: string
-  rank: string
-  color: string
+// ─── Data ─────────────────────────────────────────────────────────────────────
+
+const FIRST_PLACE_AWARDS = [
+  {
+    icon: <Crown className="h-6 w-6" />,
+    title: "Hair Festival 2025",
+    achievement: "Ultimate Look",
+    year: "2025",
+    rank: "1st",
+    color: "#FFD700",
+  },
+  {
+    icon: <Trophy className="h-6 w-6" />,
+    title: "Expo 4 Barbers",
+    achievement: "Champion",
+    year: "2024",
+    rank: "1st",
+    color: "#FFD700",
+  },
+  {
+    icon: <Award className="h-6 w-6" />,
+    title: "Hair Festival",
+    achievement: "Champion",
+    year: "2023",
+    rank: "1st",
+    color: "#FFD700",
+  },
+]
+
+const OTHER_AWARDS = [
+  {
+    icon: <Medal className="h-6 w-6" />,
+    title: "Hair Festival 2025",
+    achievement: "Barber Street",
+    year: "2025",
+    rank: "2nd",
+    color: "#C0C0C0",
+  },
+  {
+    icon: <Star className="h-6 w-6" />,
+    title: "One Shot Awards",
+    achievement: "Fade - Top 100",
+    year: "2025",
+    rank: "Top 100",
+    color: "#E5E4E2",
+  },
+]
+
+const ALL_AWARDS = [...FIRST_PLACE_AWARDS, ...OTHER_AWARDS]
+
+// ─── Award card ───────────────────────────────────────────────────────────────
+
+interface AwardCardProps {
+  award: typeof ALL_AWARDS[0]
+  animationIndex: number
+  inView: boolean
 }
 
-export default function Awards() {
-  const [currentSlide, setCurrentSlide] = useState(0)
-  const scrollRef = useRef<HTMLDivElement>(null)
+function AwardCard({ award, animationIndex, inView }: AwardCardProps) {
+  // Spring easing overshoots slightly for the "bump into position" feel
+  const transition = `
+    transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) ${animationIndex * 110}ms,
+    opacity   0.45s ease                                ${animationIndex * 110}ms
+  `
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (scrollRef.current) {
-        const scrollLeft = scrollRef.current.scrollLeft
-        const cardWidth = 320 + 16 // card width + gap
-        const newSlide = Math.round(scrollLeft / cardWidth)
-        setCurrentSlide(newSlide)
-      }
-    }
+  return (
+    <div
+      className="relative flex-shrink-0 w-80 lg:w-auto snap-start pt-4"
+      style={{
+        transform: inView ? "translateX(0)" : "translateX(140px)",
+        opacity: inView ? 1 : 0,
+        transition,
+      }}
+    >
+      <div className="bg-white rounded-lg p-8 hover:shadow-lg transition-shadow duration-300 border border-gray-100 h-full">
 
-    const scrollElement = scrollRef.current
-    if (scrollElement) {
-      scrollElement.addEventListener('scroll', handleScroll)
-      return () => scrollElement.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
-  const firstPlaceAwards = [
-    { 
-      icon: <Crown className="h-6 w-6" />, 
-      title: "Hair Festival 2025", 
-      achievement: "Ultimate Look",
-      year: "2025",
-      rank: "1st",
-      color: "#FFD700" // Gold
-    },
-    { 
-      icon: <Trophy className="h-6 w-6" />, 
-      title: "Expo 4 Barbers", 
-      achievement: "Champion",
-      year: "2024",
-      rank: "1st",
-      color: "#FFD700" // Gold
-    },
-    { 
-      icon: <Award className="h-6 w-6" />, 
-      title: "Hair Festival", 
-      achievement: "Champion",
-      year: "2023",
-      rank: "1st",
-      color: "#FFD700" // Gold
-    }
-  ]
-
-  const otherAwards = [
-    { 
-      icon: <Medal className="h-6 w-6" />, 
-      title: "Hair Festival 2025", 
-      achievement: "Barber Street",
-      year: "2025",
-      rank: "2nd",
-      color: "#C0C0C0" // Silver
-    },
-    { 
-      icon: <Star className="h-6 w-6" />, 
-      title: "One Shot Awards", 
-      achievement: "Fade - Top 100",
-      year: "2025",
-      rank: "Top 100",
-      color: "#E5E4E2" // Platinum
-    }
-  ]
-
-  const allAwards = [...firstPlaceAwards, ...otherAwards]  
-
-  const stats = [
-    { icon: <Award className="h-8 w-8" />, value: "8", label: "Years Experience" },
-    { icon: <Users className="h-8 w-8" />, value: "200+", label: "5 Star Satisfied Clients" },
-    { icon: <Clock className="h-8 w-8" />, value: "24/7", label: "Online Booking" },
-    { icon: <Star className="h-8 w-8" />, value: "5.0", label: "Average Rating" },
-  ]
-
-  const AwardCard = ({ award }: { award: AwardType }) => (
-    <div className="relative flex-shrink-0 w-80 lg:w-auto snap-start pt-4">
-      {/* Card */}
-      <div className="bg-white rounded-lg p-6 hover:shadow-lg transition-shadow duration-300 border border-gray-100 h-full">
-        
-        {/* Rank Badge */}
-        <div 
+        {/* Rank badge */}
+        <div
           className="absolute -top-1 -right-1 w-12 h-12 rounded-full flex items-center justify-center text-white font-light text-xs shadow-lg z-10"
           style={{ backgroundColor: award.color }}
         >
@@ -101,134 +88,135 @@ export default function Awards() {
         </div>
 
         {/* Icon */}
-        <div className="inline-flex items-center justify-center p-3 rounded-full mb-4 text-white" style={{ backgroundColor: '#383E3E' }}>
+        <div
+          className="inline-flex items-center justify-center p-3 rounded-full mb-5 text-white"
+          style={{ backgroundColor: "#383E3E" }}
+        >
           {award.icon}
         </div>
 
-        {/* Content */}
+        {/* Text */}
         <div className="space-y-2">
-          <h3 className="text-lg font-light text-[#2C2C2C]">
-            {award.title}
-          </h3>
-          <p className="text-[#666666] font-light text-sm">
-            {award.achievement}
-          </p>
-          <div className="pt-3 border-t border-gray-100">
-            <span className="text-xs text-[#999999] font-light">
-              {award.year}
-            </span>
+          <h3 className="text-lg font-light text-[#2C2C2C]">{award.title}</h3>
+          <p className="text-[#666666] font-light text-sm">{award.achievement}</p>
+          <div className="pt-4 border-t border-gray-100">
+            <span className="text-xs text-[#999999] font-light">{award.year}</span>
           </div>
         </div>
+
       </div>
     </div>
   )
+}
+
+// ─── Main export ──────────────────────────────────────────────────────────────
+
+export default function Awards() {
+  const [inView, setInView] = useState(false)
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const sectionRef = useRef<HTMLDivElement>(null)
+  const scrollRef = useRef<HTMLDivElement>(null)
+
+  // Trigger animation once when the section scrolls into view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.15 }
+    )
+    if (sectionRef.current) observer.observe(sectionRef.current)
+    return () => observer.disconnect()
+  }, [])
+
+  // Track mobile carousel scroll position
+  useEffect(() => {
+    const el = scrollRef.current
+    if (!el) return
+    const handleScroll = () => {
+      const newSlide = Math.round(el.scrollLeft / (320 + 16))
+      setCurrentSlide(newSlide)
+    }
+    el.addEventListener("scroll", handleScroll)
+    return () => el.removeEventListener("scroll", handleScroll)
+  }, [])
 
   return (
-    <section 
+    <section
       id="awards"
-      className="pb-8 pt-16" style={{ backgroundColor: '#F5F5F5' }}
+      ref={sectionRef}
+      className="py-24 lg:py-32"
+      style={{ backgroundColor: "#F5F5F5" }}
     >
       <div className="container mx-auto px-6">
-        
-        {/* Awards Title */}
-        <div className="text-center mb-20">
-          <p className="text-sm tracking-[0.3em] font-light mb-4" style={{ color: '#565656', fontFamily: 'var(--font-body)' }}>AWARDS AND REVIEWS</p>
-          <h2 className="text-5xl font-extralight mb-6" style={{ color: '#0C0C0C' }}>MULTI AWARD WINNING</h2>
-          <p className="text-lg max-w-2xl mx-auto font-extralight leading-6 text-gray-600" style={{ fontFamily: 'var(--font-body)' }}>
+
+        {/* Heading */}
+        <div className="text-center mb-24">
+          <p className="text-sm tracking-[0.3em] font-light mb-4" style={{ color: "#565656" }}>
+            AWARDS AND REVIEWS
+          </p>
+          <h2 className="text-5xl font-extralight mb-6" style={{ color: "#0C0C0C" }}>
+            MULTI AWARD WINNING
+          </h2>
+          <p className="text-lg max-w-2xl mx-auto font-extralight leading-7 text-gray-600">
             Recognised excellence in barbering craftsmanship with multiple industry awards and outstanding client satisfaction.
           </p>
         </div>
 
-        {/* Awards Grid */}
-        <div className="mb-16">
-          {/* Desktop Layout */}
-          <div className="hidden lg:block">
-            {/* First Place Awards - 3 in a row */}
-            <div className="grid grid-cols-3 gap-6 mb-8">
-              {firstPlaceAwards.map((award, index) => (
-                <AwardCard key={`first-${index}`} award={award} />
-              ))}
-            </div>
-            
-            {/* Other Awards - Centered between columns */}
-            <div className="grid grid-cols-6 gap-6">
-              <div className="col-start-2 col-span-2">
-                <AwardCard award={otherAwards[0]} />
-              </div>
-              <div className="col-start-4 col-span-2">
-                <AwardCard award={otherAwards[1]} />
-              </div>
-            </div>
+        {/* Desktop grid */}
+        <div className="hidden lg:block mb-20">
+          <div className="grid grid-cols-3 gap-8 mb-10">
+            {FIRST_PLACE_AWARDS.map((award, i) => (
+              <AwardCard key={`first-${i}`} award={award} animationIndex={i} inView={inView} />
+            ))}
           </div>
-          
-          {/* Mobile Layout - All awards in one scrollable row */}
-          <div className="lg:hidden">
-            <div 
-              ref={scrollRef}
-              className="overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide"
-              style={{ 
-                scrollbarWidth: 'none', 
-                msOverflowStyle: 'none',
-                WebkitOverflowScrolling: 'touch'
-              }}
-            >
-              <div className="flex space-x-4 w-max px-4">
-                {allAwards.map((award, index) => (
-                  <AwardCard key={`mobile-${index}`} award={award} />
-                ))}
-              </div>
+
+          <div className="grid grid-cols-6 gap-8">
+            <div className="col-start-2 col-span-2">
+              <AwardCard award={OTHER_AWARDS[0]} animationIndex={3} inView={inView} />
             </div>
-            
-            {/* Mobile Card Indicator Overlay */}
-            <div className="flex justify-center mt-8">
-              <div className="bg-black/80 backdrop-blur-sm rounded-full px-4 py-2">
-                <div className="flex items-center space-x-2">
-                  {allAwards.map((_, index) => (
-                    <div
-                      key={index}
-                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                        index === currentSlide ? 'bg-white' : 'bg-white/30'
-                      }`}
-                    />
-                  ))}
-                  <span className="text-white text-sm ml-3 font-light">
-                    {currentSlide + 1} / {allAwards.length}
-                  </span>
-                </div>
-              </div>
+            <div className="col-start-4 col-span-2">
+              <AwardCard award={OTHER_AWARDS[1]} animationIndex={4} inView={inView} />
             </div>
           </div>
         </div>
 
-        {/* Stats Section */}
-        {/* <div className="bg-white rounded-lg p-8 shadow-sm">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center group">
-                <div className="mx-auto p-4 rounded-full w-fit transition-colors duration-300 text-white" style={{ backgroundColor: '#383E3E' }}>
-                  {stat.icon}
-                </div>
-                <div className="text-4xl font-extralight text-[#2C2C2C] mb-2 mt-4">
-                  {stat.value}
-                </div>
-                <div className="text-sm tracking-wide text-[#666666] font-light">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
+        {/* Mobile carousel */}
+        <div className="lg:hidden">
+          <div
+            ref={scrollRef}
+            className="overflow-x-auto pb-4 snap-x snap-mandatory"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" } as React.CSSProperties}
+          >
+            <div className="flex space-x-4 w-max px-4">
+              {ALL_AWARDS.map((award, i) => (
+                <AwardCard key={`mobile-${i}`} award={award} animationIndex={i} inView={inView} />
+              ))}
+            </div>
           </div>
-        </div> */}
+
+          {/* Slide indicator */}
+          <div className="flex justify-center mt-8">
+            <div className="bg-black/80 backdrop-blur-sm rounded-full px-4 py-2 flex items-center space-x-2">
+              {ALL_AWARDS.map((_, i) => (
+                <div
+                  key={i}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    i === currentSlide ? "bg-white" : "bg-white/30"
+                  }`}
+                />
+              ))}
+              <span className="text-white text-sm ml-3 font-light">
+                {currentSlide + 1} / {ALL_AWARDS.length}
+              </span>
+            </div>
+          </div>
+        </div>
+
       </div>
-      
-      <style jsx>{`
-        .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
     </section>
   )
 }

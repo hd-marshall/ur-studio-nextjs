@@ -12,6 +12,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         'body': ['var(--font-custom)', 'sans-serif'],
+        'oswald': ['var(--font-oswald)', 'sans-serif'],
       },
       colors: {
         background: 'hsl(var(--background))',

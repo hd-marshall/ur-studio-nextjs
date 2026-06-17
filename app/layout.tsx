@@ -1,7 +1,6 @@
 import React from 'react';
 import type { Metadata } from 'next'
-import { Inter } from "next/font/google"
-import localFont from 'next/font/local'
+import { Inter, Oswald } from "next/font/google"
 
 import "./globals.css"
 import { Providers } from "./providers"
@@ -10,15 +9,15 @@ import Footer from "./components/Footer"
 
 import Breadcrumbs from './components/Breadcrumbs';
 
-const customFont = localFont({
-  src: '../public/fonts/Nitti-Normal.ttf',
-  variable: '--font-body',
-  display: 'swap',
-})
-
 const inter = Inter({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700"],
+})
+
+const oswald = Oswald({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-oswald",
 })
 
 export const metadata: Metadata = {
@@ -82,7 +81,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`scroll-smooth overflow-x-hidden ${customFont.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`scroll-smooth overflow-x-hidden ${oswald.variable}`} suppressHydrationWarning>
       <head>
         <meta name="google-site-verification" content="Q21_LKHWdRir-tJYF9VfjaEsSk3J-4ifw0t0MtMBXIg" />
         {/* Sitemap */}

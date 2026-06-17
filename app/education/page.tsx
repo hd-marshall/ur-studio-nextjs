@@ -159,19 +159,19 @@ export default function EducationPage() {
             <div className="space-y-6">
               <p
                 className="text-base font-extralight leading-7 text-gray-700 dark:text-gray-300"
-                style={{ fontFamily: "var(--font-body)" }}
+               
               >
                 Throughout this seminar, we'll demonstrate our processes live. Rather than focusing only on techniques, this seminar explores the reasoning and philosophy that guide every haircut, from cutting to styling.
               </p>
               <p
                 className="text-base font-extralight leading-7 text-gray-700 dark:text-gray-300"
-                style={{ fontFamily: "var(--font-body)" }}
+               
               >
                 Designed for barbers looking to refine their vision and approach to hair, this intimate session allows for open discussion, questions, and deeper insight into our workflow.
               </p>
               <p
                 className="text-base font-extralight leading-7 text-gray-700 dark:text-gray-300"
-                style={{ fontFamily: "var(--font-body)" }}
+               
               >
                 With limited seats available, the environment is kept small to encourage learning, interaction, and a closer look at the details that matter.
               </p>

@@ -1,103 +1,192 @@
 "use client"
-import { Button } from "@/components/ui/button"
-import { ArrowRight } from "lucide-react"
+
+import React, { useState, useEffect, useRef } from "react"
+
+const BOOKING_URL =
+  "https://www.fresha.com/a/ur-studio-melbourne-61a-peel-street-lmpkp2dv/booking?menu=true&multi=true&pId=1401362&cartId=a3f18a4e-a008-4a7e-995c-bd998ed45476"
+
+const WINS = [
+  { event: "Hair Festival",   achievement: "Ultimate Look", placement: "1ST",     year: "2025" },
+  { event: "Expo 4 Barbers",  achievement: "Champion",      placement: "1ST",     year: "2024" },
+  { event: "Hair Festival",   achievement: "Champion",      placement: "2ND",     year: "2023" },
+  { event: "One Shot Awards", achievement: "Fade",          placement: "Top 100", year: "2025" },
+]
+
+// ─── Sub-components ──────────────────────────────────────────────────────────
+
+interface WinItemProps {
+  event: string
+  achievement: string
+  placement: string
+  year: string
+  index: number
+  animated: boolean
+}
+
+function WinItem({ event, achievement, placement, year, index, animated }: WinItemProps) {
+  // Items fly in from fully off-screen right, staggered, with spring bump on landing
+  const delay = index * 80
+  return (
+    <div
+      className="flex-shrink-0"
+      style={{
+        transform: animated ? "translateX(0)" : "translateX(100vw)",
+        opacity: animated ? 1 : 0,
+        transition: `transform 0.65s cubic-bezier(0.22, 1, 0.36, 1) ${delay}ms, opacity 0.3s ease ${delay}ms`,
+      }}
+    >
+      <p className="text-white text-sm font-semibold font-oswald tracking-wide whitespace-nowrap">{event}</p>
+      <p className="text-white/50 text-xs tracking-widest uppercase font-light whitespace-nowrap">
+        {achievement} &middot; {placement} &middot; {year}
+      </p>
+    </div>
+  )
+}
+
+function WinsBar() {
+  const [animated, setAnimated] = useState(false)
+  const [activeIndex, setActiveIndex] = useState(0)
+  const scrollRef = useRef<HTMLDivElement>(null)
+
+  // Fire the slide-in animation shortly after mount
+  useEffect(() => {
+    const timer = setTimeout(() => setAnimated(true), 50)
+    return () => clearTimeout(timer)
+  }, [])
+
+  // Track scroll position for mobile indicator
+  useEffect(() => {
+    const el = scrollRef.current
+    if (!el) return
+    const handleScroll = () => {
+      const { scrollLeft, scrollWidth, clientWidth } = el
+      const maxScroll = scrollWidth - clientWidth
+      if (maxScroll <= 0) return
+      setActiveIndex(Math.round((scrollLeft / maxScroll) * (WINS.length - 1)))
+    }
+    el.addEventListener("scroll", handleScroll, { passive: true })
+    return () => el.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  return (
+    <div className="absolute bottom-0 left-0 right-0 bg-black/45 backdrop-blur-sm z-20">
+
+      {/* ── Desktop: THE WINS fixed left, items spread across remaining space ── */}
+      <div className="hidden lg:flex items-center px-12 py-4 gap-6">
+        <span className="text-white text-xs tracking-[0.3em] font-semibold font-oswald uppercase whitespace-nowrap flex-shrink-0">
+          The Wins
+        </span>
+        <div className="w-px h-8 bg-white/20 flex-shrink-0" />
+        <div className="flex flex-1 items-center">
+          {WINS.map((win, i) => (
+            <React.Fragment key={i}>
+              {i > 0 && <div className="w-px h-8 bg-white/20 flex-shrink-0" />}
+              <div className="flex-1 flex items-center justify-center">
+                <WinItem {...win} index={i} animated={animated} />
+              </div>
+            </React.Fragment>
+          ))}
+        </div>
+      </div>
+
+      {/* ── Mobile: THE WINS fixed left, items scroll horizontally ── */}
+      <div className="lg:hidden">
+        <div className="flex items-center px-6 py-4 gap-4">
+          {/* Static label */}
+          <span className="text-white text-xs tracking-[0.3em] font-semibold font-oswald uppercase whitespace-nowrap flex-shrink-0">
+            The Wins
+          </span>
+          <div className="w-px h-8 bg-white/20 flex-shrink-0" />
+          {/* Scrollable items */}
+          <div
+            ref={scrollRef}
+            className="flex gap-8 overflow-x-auto snap-x snap-mandatory"
+            style={{ scrollbarWidth: "none" } as React.CSSProperties}
+          >
+            {WINS.map((win, i) => (
+              <div key={i} className="snap-center flex-shrink-0">
+                <WinItem {...win} index={i} animated={animated} />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Grey dot progress indicator */}
+        <div className="flex justify-center gap-2 pb-2">
+          {WINS.map((_, i) => (
+            <div
+              key={i}
+              className="h-0.5 w-5 rounded-full transition-colors duration-300"
+              style={{ backgroundColor: i === activeIndex ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.25)" }}
+            />
+          ))}
+        </div>
+      </div>
+
+    </div>
+  )
+}
+
+function HeroContent() {
+  return (
+    <div className="relative z-10 w-full px-6 lg:px-12 pb-32 pt-8 flex items-center min-h-screen">
+      <div className="max-w-xl">
+
+        {/* Text is 35% smaller than the original sizes */}
+        <h1
+          className="font-oswald font-bold text-white uppercase leading-none"
+          style={{ fontSize: "clamp(2.8rem, 6.3vw, 6rem)" }}
+        >
+          3 Awards.
+        </h1>
+
+        <h1
+          className="font-oswald font-bold text-white uppercase leading-none"
+          style={{ fontSize: "clamp(2.8rem, 6.3vw, 6rem)" }}
+        >
+          3 Years.
+        </h1>
+
+        <p
+          className="font-oswald font-normal text-white uppercase mt-4 leading-tight"
+          style={{ fontSize: "clamp(1.3rem, 3vw, 2.1rem)" }}
+        >
+          Australia&apos;s Biggest<br />Barbering Competitions.
+        </p>
+
+        <button
+          className="mt-8 bg-white text-black px-10 py-4 text-sm font-oswald font-bold tracking-[0.2em] uppercase hover:bg-gray-100 transition-colors duration-200"
+          onClick={() => window.open(BOOKING_URL, "_blank")}
+        >
+          Book Now
+        </button>
+
+      </div>
+    </div>
+  )
+}
+
+// ─── Main export ─────────────────────────────────────────────────────────────
 
 export default function Hero() {
   return (
-    <section
-      id="home"
-      className="min-h-screen flex items-center bg-gradient-to-br from-white to-gray-50 dark:from-black dark:to-gray-950"
-    >
-      <div className="container mx-auto px-6 pb-20 pt-24">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div className="space-y-8">
-            <div className="space-y-6">
-              <div className="space-y-2">
-                <p className="text-sm tracking-[0.3em] text-gray-600 dark:text-gray-400 font-light text-center lg:text-left" style={{ fontFamily: 'var(--font-body)' }}>
-                  MELBOURNE'S FINEST
-                </p>
-                <div className="w-48 lg:w-64 h-auto pt-8 pb-4 mx-auto lg:mx-0">
-                  <img 
-                    src="/logo/logo-svg.svg" 
-                    alt="UR Studio Logo"
-                    className="w-full h-auto"
-                    style={{ 
-                      filter: 'brightness(0)',
-                      colorScheme: 'dark'
-                    }}
-                  />
-                </div>
-              </div>
-              <p className="font-body leading-6 text-md text-gray-600 dark:text-gray-400 font-extralight max-w-lg text-center lg:text-left mx-auto lg:mx-0" style={{ fontFamily: 'var(--font-body)' }}>
-                UR Studio; Born from passion, fuelled by youth - we bring flare, edge, and a new wave of barber culture to the city of Melbourne. Every service is a tailored experience built around you, truly making it 'yours'.
-              </p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button
-                size="lg"
-                className="bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 px-8 py-4 text-sm tracking-wide font-light group"
-                onClick={() => window.open('https://www.fresha.com/a/ur-studio-melbourne-61a-peel-street-lmpkp2dv/booking?menu=true&multi=true&pId=1401362&cartId=a3f18a4e-a008-4a7e-995c-bd998ed45476', '_blank')}
-              >
-                BOOK APPOINTMENT
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-black dark:border-white text-black dark:text-white hover:bg-zinc-800 hover:text-white dark:hover:bg-zinc-200 dark:hover:text-black px-8 py-4 text-sm tracking-wide font-light group transition-all duration-300"
-                onClick={() => {
-                  const teamSection: HTMLElement | null = document.getElementById('team-members');
-                  if (teamSection) {
-                    const targetPosition: number = teamSection.getBoundingClientRect().top + window.pageYOffset - 75;
-                    
-                    const startPosition: number = window.pageYOffset;
-                    const distance: number = targetPosition - startPosition;
-                    const duration: number = 1000; // 1 second
-                    let startTime: number | null = null;
-                    
-                    // Ease-in-out cubic function for slow-to-fast-to-slow animation
-                    const easeInOutCubic = (t: number): number => {
-                      return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
-                    };
-                    
-                    const animateScroll = (currentTime: number): void => {
-                      if (startTime === null) startTime = currentTime;
-                      const timeElapsed: number = currentTime - startTime;
-                      const progress: number = Math.min(timeElapsed / duration, 1);
-                      const ease: number = easeInOutCubic(progress);
-                      
-                      window.scrollTo(0, startPosition + (distance * ease));
-                      
-                      if (progress < 1) {
-                        requestAnimationFrame(animateScroll);
-                      }
-                    };
-                    
-                    requestAnimationFrame(animateScroll);
-                  }
-                }}
-              >
-                VIEW OUR TEAM
-              </Button>
-            </div>
-          </div>
-          <div className="relative">
-            <div className="aspect-[4/5] relative overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800">
-              <img
-                src="/images/hero/hero.webp"
-                alt="Master barber at work"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-            </div>
-            <div className="absolute -bottom-8 -left-8 bg-white dark:bg-zinc-800 p-8 shadow-2xl">
-              <div className="text-4xl font-extralight text-black dark:text-white">EST.</div>
-              <div className="text-4xl font-extralight text-black dark:text-white">2025</div>
-              <div className="text-xs tracking-[0.2em] text-gray-600 dark:text-gray-400 mt-2">MELBOURNE</div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <section id="home" className="relative min-h-screen bg-[#9e9d9b] overflow-hidden">
+
+      <img
+        src="/images/hero/hero.jpg"
+        alt="Award-winning barbershop"
+        className="absolute inset-0 w-full h-full object-cover object-center"
+      />
+      {/* Dark-left gradient overlay, fades to transparent at ~38% from left */}
+      <div
+        className="absolute inset-0 z-[5]"
+        style={{ background: "linear-gradient(to right, rgba(55,55,55,0.80) 0%, rgba(55,55,55,0.50) 18%, rgba(55,55,55,0.0) 35%)" }}
+      />
+
+      <HeroContent />
+
+      <WinsBar />
+
     </section>
   )
 }

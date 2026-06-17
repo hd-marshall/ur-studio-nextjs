@@ -33,7 +33,7 @@ export default function About() {
       <div className="text-center mb-16 max-w-[90%] mx-auto" id="team-members" >
         <p className="text-sm tracking-[0.3em] text-gray-600 dark:text-gray-400 font-light mb-4">MEET THE TEAM</p>
         <h2 className="text-5xl font-extralight text-black dark:text-white mb-6">MASTER CRAFTSMEN</h2>
-        <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-light leading-6" style={{ fontFamily: 'var(--font-body)' }}>
+        <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-light leading-6">
           Our skilled professionals bring passion, precision, and years of dedicated training to every service.
         </p>
       </div>
@@ -63,7 +63,7 @@ export default function About() {
             </div>
             
             {/* Mobile: Text Third */}
-            <div className="text-md space-y-6 text-gray-700 dark:text-gray-600 leading-6 font-extralight" style={{ fontFamily: 'var(--font-body)' }}>
+            <div className="text-md space-y-6 text-gray-700 dark:text-gray-600 leading-6 font-extralight">
               <p className="text-md">
                 I'm Milo Le, co-founder of UR Studio. I'm a multiple award-winning barber, and a passionate creative at heart.
               </p>
@@ -88,7 +88,7 @@ export default function About() {
                   MILO LE
                 </h2>
               </div>
-              <div className="text-md space-y-6 text-gray-700 dark:text-gray-600 leading-6 font-extralight" style={{ fontFamily: 'var(--font-body)' }}>
+              <div className="text-md space-y-6 text-gray-700 dark:text-gray-600 leading-6 font-extralight">
                 <p className="text-md">
                   I'm Milo Le, co-founder of UR Studio. I'm a multiple award-winning barber, and a passionate creative at heart.
                 </p>
@@ -141,7 +141,7 @@ export default function About() {
             </div>
             
             {/* Mobile: Text Third */}
-            <div className="text-md space-y-6 text-gray-700 dark:text-gray-600 leading-6 font-extralight" style={{ fontFamily: 'var(--font-body)' }}>
+            <div className="text-md space-y-6 text-gray-700 dark:text-gray-600 leading-6 font-extralight">
               <p className="text-md">
                 I'm Xian-Ri, co-founder of UR Studio. I've practised many art forms throughout my life-creating feels natural to me; it is an outlet for self-expression.
               </p>
@@ -177,7 +177,7 @@ export default function About() {
                   XIAN-RI WOO
                 </h2>
               </div>
-              <div className="text-md space-y-6 text-gray-700 dark:text-gray-600 leading-6 font-extralight" style={{ fontFamily: 'var(--font-body)' }}>
+              <div className="text-md space-y-6 text-gray-700 dark:text-gray-600 leading-6 font-extralight">
                 <p className="text-md">
                   I'm Xian-Ri, co-founder of UR Studio. I've practised many art forms throughout my life-creating feels natural to me; it is an outlet for self-expression.
                 </p>
@@ -221,7 +221,7 @@ export default function About() {
             </div>
 
             {/* Mobile: Text Third */}
-            <div className="text-md space-y-6 text-gray-700 dark:text-gray-600 leading-6 font-extralight" style={{ fontFamily: 'var(--font-body)' }}>
+            <div className="text-md space-y-6 text-gray-700 dark:text-gray-600 leading-6 font-extralight">
               <p className="text-md">
                 I'm Bendon (Ben) Heung, member of UR Studio. Born and raised in Melbourne, I'm inspired by the city and the creatives around me, dedicating myself to helping pioneer individuality.
               </p>
@@ -246,7 +246,7 @@ export default function About() {
                   BENDON HEUNG
                 </h2>
               </div>
-              <div className="text-md space-y-6 text-gray-700 dark:text-gray-600 leading-6 font-extralight" style={{ fontFamily: 'var(--font-body)' }}>
+              <div className="text-md space-y-6 text-gray-700 dark:text-gray-600 leading-6 font-extralight">
                 <p className="text-md">
                   I'm Bendon (Ben) Heung, member of UR Studio. Born and raised in Melbourne, I'm inspired by the city and the creatives around me, dedicating myself to helping pioneer individuality.
                 </p>

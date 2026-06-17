@@ -69,9 +69,9 @@ export default function Services() {
     <section id="services" className="pt-24 pb-12 lg:pb-24 relative" style={{ backgroundColor: '#EFEFEF' }}>
       <div className="container mx-auto px-6">
         <div className="text-center mb-20">
-          <p className="text-sm tracking-[0.3em] font-light mb-4" style={{ color: '#565656', fontFamily: 'var(--font-body)' }}>OUR SERVICES</p>
+          <p className="text-sm tracking-[0.3em] font-light mb-4" style={{ color: '#565656' }}>OUR SERVICES</p>
           <h2 className="text-5xl font-extralight mb-6" style={{ color: '#0C0C0C' }}>CRAFTED EXPERIENCES</h2>
-          <p className="text-lg max-w-2xl mx-auto font-extralight leading-6 text-gray-600" style={{ fontFamily: 'var(--font-body)' }}>
+          <p className="text-lg max-w-2xl mx-auto font-extralight leading-6 text-gray-600">
           Each service is meticulously designed to deliver an unparalleled grooming experience that exceeds
           expectations.
           </p>

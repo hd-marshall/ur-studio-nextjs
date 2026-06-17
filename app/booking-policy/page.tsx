@@ -9,7 +9,7 @@ export default function BookingPolicy() {
           <h1 className="text-5xl font-extralight text-black dark:text-white mb-6">
             BOOKING POLICY
           </h1>
-          <p className="text-md text-gray-600 dark:text-gray-400 font-light leading-relaxed" style={{ fontFamily: 'var(--font-body)' }}>
+          <p className="text-md text-gray-600 dark:text-gray-400 font-light leading-relaxed">
             Please review our cancellation and booking policies to ensure the best experience for all clients.
           </p>
         </div>
@@ -25,7 +25,7 @@ export default function BookingPolicy() {
                 <h2 className="text-2xl font-light text-green-800 dark:text-green-200 mb-4">
                   Free Cancellation
                 </h2>
-                <p className="text-green-700 dark:text-green-300 text-md leading-relaxed" style={{ fontFamily: 'var(--font-body)' }}>
+                <p className="text-green-700 dark:text-green-300 text-md leading-relaxed">
                   <strong>Free cancellation</strong> is available as long as the appointment is cancelled{" "}
                   <strong>at least 6 hours before</strong> the appointment.
                 </p>
@@ -41,7 +41,7 @@ export default function BookingPolicy() {
                 <h2 className="text-2xl font-light text-orange-800 dark:text-orange-200 mb-4">
                   Late Cancellations
                 </h2>
-                <p className="text-orange-700 dark:text-orange-300 text-md leading-relaxed" style={{ fontFamily: 'var(--font-body)' }}>
+                <p className="text-orange-700 dark:text-orange-300 text-md leading-relaxed">
                   <strong>Late cancellations</strong> (within 6 hours of your booking) will incur a{" "}
                   <strong>100% fee</strong> of service booked.
                 </p>
@@ -57,10 +57,10 @@ export default function BookingPolicy() {
                 <h2 className="text-2xl font-light text-red-800 dark:text-red-200 mb-4">
                   No Shows
                 </h2>
-                <p className="text-red-700 dark:text-red-300 text-md leading-relaxed mb-4" style={{ fontFamily: 'var(--font-body)' }}>
+                <p className="text-red-700 dark:text-red-300 text-md leading-relaxed mb-4">
                   <strong>No shows</strong> will incur a <strong>100% fee</strong> of service booked.
                 </p>
-                <p className="text-red-700 dark:text-red-300 text-md leading-relaxed" style={{ fontFamily: 'var(--font-body)' }}>
+                <p className="text-red-700 dark:text-red-300 text-md leading-relaxed">
                   Customers arriving more than <strong>10 minutes late</strong> will be considered as a{" "}
                   <strong>no show</strong>.
                 </p>
@@ -76,7 +76,7 @@ export default function BookingPolicy() {
                 <h2 className="text-2xl font-light text-blue-800 dark:text-blue-200 mb-4">
                   Additional Charges
                 </h2>
-                <p className="text-blue-700 dark:text-blue-300 text-md leading-relaxed" style={{ fontFamily: 'var(--font-body)' }}>
+                <p className="text-blue-700 dark:text-blue-300 text-md leading-relaxed">
                   <strong>10% weekend surcharge</strong> | <strong>15% holiday surcharge</strong>
                 </p>
               </div>
@@ -91,7 +91,7 @@ export default function BookingPolicy() {
                 <h2 className="text-2xl font-light text-gray-800 dark:text-gray-200 mb-4">
                   Our Commitment
                 </h2>
-                <p className="text-gray-700 dark:text-gray-300 text-md leading-relaxed" style={{ fontFamily: 'var(--font-body)' }}>
+                <p className="text-gray-700 dark:text-gray-300 text-md leading-relaxed">
                   We want to ensure that you have <strong>enough time to receive the best service</strong>, and at the 
                   same time, we do not want our <strong>upcoming clients being delayed</strong>.
                 </p>
@@ -102,7 +102,7 @@ export default function BookingPolicy() {
 
         {/* Contact Section */}
         <div className="mt-16 text-center">
-          <p className="text-gray-600 dark:text-gray-400 text-md mb-6" style={{ fontFamily: 'var(--font-body)' }}>
+          <p className="text-gray-600 dark:text-gray-400 text-md mb-6">
             Questions about our booking policy?
           </p>
           <div className="space-y-2">
