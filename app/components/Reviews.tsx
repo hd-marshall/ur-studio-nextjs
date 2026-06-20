@@ -30,6 +30,16 @@ const REVIEWS = [
 
 // ─── Sub-components ──────────────────────────────────────────────────────────
 
+function getInitials(name: string) {
+  return name
+    .split(" ")
+    .filter(Boolean)
+    .map((part) => part[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase()
+}
+
 function StarRating({ count, className = "w-3.5 h-3.5" }: { count: number; className?: string }) {
   return (
     <div className="flex gap-1">
@@ -67,7 +77,7 @@ function ReviewCard({ review, animationIndex, inView }: ReviewCardProps) {
       <div className="flex h-full flex-col bg-black/40 p-4 backdrop-blur-md">
         <div className="mb-3 flex items-center justify-between">
           <div className="flex h-6 w-6 items-center justify-center rounded-full border border-white/20 bg-black/60 font-oswald text-[11px] font-bold text-white">
-            G
+            {getInitials(review.name)}
           </div>
           <StarRating count={review.rating} />
         </div>
