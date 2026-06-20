@@ -88,10 +88,7 @@ function AwardCard({ award, animationIndex, inView }: AwardCardProps) {
         </div>
 
         {/* Icon */}
-        <div
-          className="inline-flex items-center justify-center p-3 rounded-full mb-5 text-white"
-          style={{ backgroundColor: "#383E3E" }}
-        >
+        <div className="inline-flex items-center justify-center p-3 rounded-full mb-5 bg-grey text-white">
           {award.icon}
         </div>
 
@@ -148,20 +145,19 @@ export default function Awards() {
     <section
       id="awards"
       ref={sectionRef}
-      className="py-24 lg:py-32"
-      style={{ backgroundColor: "#F5F5F5" }}
+      className="bg-grey py-24 lg:py-32"
     >
       <div className="container mx-auto px-6">
 
         {/* Heading */}
         <div className="text-center mb-24">
-          <p className="text-sm tracking-[0.3em] font-light mb-4" style={{ color: "#565656" }}>
+          <p className="text-sm tracking-[0.3em] font-light mb-4 text-white/60">
             AWARDS AND REVIEWS
           </p>
-          <h2 className="text-5xl font-extralight mb-6" style={{ color: "#0C0C0C" }}>
+          <h2 className="text-5xl font-extralight mb-6 text-white [text-shadow:0_2px_10px_rgb(var(--grey)/0.85)]">
             MULTI AWARD WINNING
           </h2>
-          <p className="text-lg max-w-2xl mx-auto font-extralight leading-7 text-gray-600">
+          <p className="text-lg max-w-2xl mx-auto font-extralight leading-7 text-white/60">
             Recognised excellence in barbering craftsmanship with multiple industry awards and outstanding client satisfaction.
           </p>
         </div>

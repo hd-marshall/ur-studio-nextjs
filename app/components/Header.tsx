@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Menu, X } from "lucide-react"
 import { useRouter } from "next/navigation"
 
@@ -16,7 +16,32 @@ const navItems = [
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [shouldRenderMenu, setShouldRenderMenu] = useState(false)
+  const [menuVisible, setMenuVisible] = useState(false)
+  const [scrollProgress, setScrollProgress] = useState(0)
   const router = useRouter()
+
+  useEffect(() => {
+    // Fades in continuously over the first 100px of scroll instead of
+    // snapping at a threshold, so the nav responds the instant scrolling starts.
+    const handleScroll = () => setScrollProgress(Math.min(window.scrollY / 100, 1))
+    handleScroll()
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  // Stays mounted through the close transition so it can slide back out (right
+  // to left in, left to right out) instead of just vanishing instantly.
+  useEffect(() => {
+    if (isMenuOpen) {
+      setShouldRenderMenu(true)
+      const timer = setTimeout(() => setMenuVisible(true), 10)
+      return () => clearTimeout(timer)
+    }
+    setMenuVisible(false)
+    const timer = setTimeout(() => setShouldRenderMenu(false), 500)
+    return () => clearTimeout(timer)
+  }, [isMenuOpen])
 
   const scrollToSection = (href: string) => {
     setIsMenuOpen(false)
@@ -37,11 +62,14 @@ export default function Header() {
   }
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-transparent">
+    <header
+      className="fixed top-0 left-0 right-0 z-50"
+      style={{ backgroundColor: `rgb(var(--grey) / ${scrollProgress})` }}
+    >
       <div className="w-full px-6 lg:px-12 py-4 lg:py-5">
 
         {/* Mobile */}
-        <div className="flex lg:hidden items-center justify-between">
+        <div className="relative z-50 flex lg:hidden items-center justify-between">
           <button
             onClick={() => scrollToSection("/")}
             className="font-oswald font-bold text-white text-lg tracking-[0.25em] hover:opacity-80 transition-opacity uppercase"
@@ -87,23 +115,29 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Mobile menu */}
-        {isMenuOpen && (
-          <nav className="lg:hidden mt-4 pt-4 border-t border-white/10 flex flex-col items-center gap-6">
-            {navItems.map((item) => (
-              <button
-                key={item.name}
-                onClick={() => scrollToSection(item.href)}
-                className="text-sm tracking-widest text-white/70 hover:text-white transition-colors font-oswald uppercase"
-              >
-                {item.name}
-              </button>
-            ))}
+        {/* Mobile menu — full-screen grey overlay, slides in right to left, out left to right */}
+        {shouldRenderMenu && (
+          <nav
+            className="fixed inset-0 z-40 flex h-screen flex-col items-center bg-grey px-6 pb-16 pt-8 transition-transform duration-500 ease-out lg:hidden"
+            style={{ transform: menuVisible ? "translateX(0)" : "translateX(100%)" }}
+          >
+            <div className="flex flex-1 flex-col items-center justify-center gap-6">
+              {navItems.map((item) => (
+                <button
+                  key={item.name}
+                  onClick={() => scrollToSection(item.href)}
+                  className="text-2xl tracking-widest text-white/70 hover:text-white transition-colors font-oswald uppercase"
+                >
+                  {item.name}
+                </button>
+              ))}
+            </div>
+            {/* Lower, thumb-level placement; white like the Hero's Book Now */}
             <button
               onClick={() => { window.open(BOOKING_URL, "_blank"); setIsMenuOpen(false) }}
-              className="border border-white text-white px-8 py-2 text-xs font-oswald font-semibold tracking-[0.2em] uppercase hover:bg-white hover:text-black transition-colors duration-200"
+              className="bg-white text-black px-12 py-5 text-base font-oswald font-bold tracking-[0.2em] uppercase hover:bg-gray-100 transition-colors duration-200"
             >
-              BOOK
+              Book Now
             </button>
           </nav>
         )}

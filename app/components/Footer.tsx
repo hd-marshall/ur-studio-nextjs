@@ -40,7 +40,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className="text-white py-16" style={{ backgroundColor: '#383E3E' }}>
+    <footer className="bg-grey text-white py-16">
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-4 gap-12">
           {/* Brand */}
@@ -54,18 +54,18 @@ export default function Footer() {
                 className="w-20 h-20 object-contain filter invert"
               />
             </button>
-            <p className="text-gray-400 leading-relaxed font-light">
+            <p className="text-white/60 leading-relaxed font-light">
               Where traditional craftsmanship meets contemporary sophistication in the heart of Melbourne.
             </p>
             <div className="flex space-x-4 justify-center md:justify-start">
               <button onClick={() => window.open('https://www.instagram.com/urstudio.au?igsh=MXBoanY0Y2FjamJzbA==', '_blank')}>
-                <Instagram className="h-5 w-5 text-gray-400 hover:text-white cursor-pointer transition-colors" />
+                <Instagram className="h-5 w-5 text-white/60 hover:text-white cursor-pointer transition-colors" />
               </button>
               <button onClick={() => window.open('https://facebook.com/', '_blank')}>
-                <Facebook className="h-5 w-5 text-gray-400 hover:text-white cursor-pointer transition-colors" />
+                <Facebook className="h-5 w-5 text-white/60 hover:text-white cursor-pointer transition-colors" />
               </button>
               <button onClick={() => window.open('https://twitter.com/', '_blank')}>
-                <Twitter className="h-5 w-5 text-gray-400 hover:text-white cursor-pointer transition-colors" />
+                <Twitter className="h-5 w-5 text-white/60 hover:text-white cursor-pointer transition-colors" />
               </button>
             </div>
           </div>
@@ -73,7 +73,7 @@ export default function Footer() {
           {/* Links */}
           <div>
             <h3 className="text-lg font-light tracking-wide mb-6">LINKS</h3>
-            <ul className="space-y-3 text-gray-400 font-light">
+            <ul className="space-y-3 text-white/60 font-light">
               <li>
                 <button 
                   onClick={() => scrollToSection('#services')}
@@ -128,7 +128,7 @@ export default function Footer() {
           {/* Quick Links */}
           <div>
             <h3 className="text-lg font-light tracking-wide mb-6">QUICK LINKS</h3>
-            <ul className="space-y-3 text-gray-400 font-light">
+            <ul className="space-y-3 text-white/60 font-light">
               <li>
                 <button 
                   onClick={handleBookingClick}
@@ -167,7 +167,7 @@ export default function Footer() {
           {/* Contact */}
           <div>
             <h3 className="text-lg font-light tracking-wide mb-6">CONTACT</h3>
-            <div className="space-y-3 text-gray-400 font-light">
+            <div className="space-y-3 text-white/60 font-light">
               <button 
                 onClick={() => window.open('https://maps.google.com/?q=61+Peels+Street+West+Melbourne+VIC+3003', '_blank')}
                 className="hover:text-white cursor-pointer transition-colors text-left block"
@@ -191,7 +191,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400 font-light">
+        <div className="border-t border-gray-800 mt-12 pt-8 text-center text-white/60 font-light">
           <p>&copy; 2025 UR Studio. All rights reserved. | Crafted with precision in Melbourne.</p>
         </div>
       </div>

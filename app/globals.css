@@ -24,6 +24,11 @@
     --input: 0 0% 90%;
     --ring: 0 0% 0%;
     --radius: 0.5rem;
+
+    /* Brand grey — sourced from the Hero gradient overlay (rgba(55,55,55,*)). Single
+       source of truth for every grey background/accent on the site; use `bg-grey`,
+       `text-grey`, `border-grey/40`, etc. instead of hardcoding hex greys. */
+    --grey: 55 55 55;
   }
 
   .dark {

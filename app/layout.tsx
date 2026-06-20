@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Metadata } from 'next'
-import { Inter, Oswald } from "next/font/google"
+import { Oswald } from "next/font/google"
 
 import "./globals.css"
 import { Providers } from "./providers"
@@ -8,11 +8,6 @@ import Header from "./components/Header"
 import Footer from "./components/Footer"
 
 import Breadcrumbs from './components/Breadcrumbs';
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700"],
-})
 
 const oswald = Oswald({
   subsets: ["latin"],
@@ -141,7 +136,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.className} overflow-x-hidden max-w-[100vw] w-full`}>
+      <body className={`${oswald.className} overflow-x-hidden max-w-[100vw] w-full`}>
 
         <div className="min-h-screen w-full max-w-[100vw] overflow-x-hidden">
           <Header />

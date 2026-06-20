@@ -66,56 +66,47 @@ export default function Services() {
   }, [services.length])
 
   return (
-    <section id="services" className="pt-24 pb-12 lg:pb-24 relative" style={{ backgroundColor: '#EFEFEF' }}>
+    <section id="services" className="bg-grey pt-24 pb-12 lg:pb-24 relative">
       <div className="container mx-auto px-6">
         <div className="text-center mb-20">
-          <p className="text-sm tracking-[0.3em] font-light mb-4" style={{ color: '#565656' }}>OUR SERVICES</p>
-          <h2 className="text-5xl font-extralight mb-6" style={{ color: '#0C0C0C' }}>CRAFTED EXPERIENCES</h2>
-          <p className="text-lg max-w-2xl mx-auto font-extralight leading-6 text-gray-600">
+          <p className="text-sm tracking-[0.3em] font-light mb-4 text-white/60">OUR SERVICES</p>
+          <h2 className="text-5xl font-extralight mb-6 text-white">CRAFTED EXPERIENCES</h2>
+          <p className="text-lg max-w-2xl mx-auto font-extralight leading-6 text-white/60">
           Each service is meticulously designed to deliver an unparalleled grooming experience that exceeds
           expectations.
           </p>
         </div>
-        
+
         {/* Desktop Grid */}
         <div className="hidden lg:grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
             <Card
               key={index}
-              className="group hover:shadow-2xl transition-all duration-500"
-              style={{ 
-                backgroundColor: '#EFEFEF',
-                borderColor: '#A3A3A3'
-              }}
+              className="group hover:shadow-2xl transition-all duration-500 bg-grey"
+              style={{ borderColor: 'rgba(255,255,255,0.2)' }}
             >
               <CardHeader className="text-center pb-6">
-                <div 
-                  className="mx-auto mb-6 p-4 rounded-full w-fit transition-colors duration-300"
-                  style={{ 
-                    backgroundColor: '#A3A3A3',
-                    color: '#0C0C0C'
-                  }}
+                <div
+                  className="mx-auto mb-6 p-4 rounded-full w-fit transition-colors duration-300 text-white"
+                  style={{ backgroundColor: 'rgba(255,255,255,0.12)' }}
                 >
                   {service.icon}
                 </div>
-                <CardTitle className="text-xl font-light tracking-wide min-h-5" style={{ color: '#0C0C0C' }}>
+                <CardTitle className="text-xl font-light tracking-wide min-h-5 text-white">
                   {service.title}
                 </CardTitle>
-                <div className="text-sm tracking-wide" style={{ color: '#565656' }}>
+                <div className="text-sm tracking-wide text-white/60">
                   {service.duration}
                 </div>
-                <CardDescription className="font-light leading-relaxed" style={{ color: '#565656' }}>
+                <CardDescription className="font-light leading-relaxed text-white/60">
                   {service.description}
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-3">
                   {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-sm font-light" style={{ color: '#0C0C0C' }}>
-                      <div 
-                        className="w-1 h-1 rounded-full mr-4"
-                        style={{ backgroundColor: '#0C0C0C' }}
-                      ></div>
+                    <li key={idx} className="flex items-center text-sm font-light text-white">
+                      <div className="w-1 h-1 rounded-full mr-4 bg-white"></div>
                       {feature}
                     </li>
                   ))}
@@ -134,40 +125,31 @@ export default function Services() {
           {services.map((service, index) => (
             <Card
               key={index}
-              className="group hover:shadow-2xl transition-all duration-500 min-w-[280px] snap-center"
-              style={{ 
-                backgroundColor: '#EFEFEF',
-                borderColor: '#A3A3A3'
-              }}
+              className="group hover:shadow-2xl transition-all duration-500 min-w-[280px] snap-center bg-grey"
+              style={{ borderColor: 'rgba(255,255,255,0.2)' }}
             >
               <CardHeader className="text-center pb-6">
-                <div 
-                  className="mx-auto mb-6 p-4 rounded-full w-fit transition-colors duration-300"
-                  style={{ 
-                    backgroundColor: '#A3A3A3',
-                    color: '#0C0C0C'
-                  }}
+                <div
+                  className="mx-auto mb-6 p-4 rounded-full w-fit transition-colors duration-300 text-white"
+                  style={{ backgroundColor: 'rgba(255,255,255,0.12)' }}
                 >
                   {service.icon}
                 </div>
-                <CardTitle className="text-xl font-light tracking-wide" style={{ color: '#0C0C0C' }}>
+                <CardTitle className="text-xl font-light tracking-wide text-white">
                   {service.title}
                 </CardTitle>
-                <div className="text-sm tracking-wide" style={{ color: '#565656' }}>
+                <div className="text-sm tracking-wide text-white/60">
                   {service.duration}
                 </div>
-                <CardDescription className="font-light leading-relaxed" style={{ color: '#565656' }}>
+                <CardDescription className="font-light leading-relaxed text-white/60">
                   {service.description}
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-3">
                   {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-sm font-light" style={{ color: '#0C0C0C' }}>
-                      <div 
-                        className="w-1 h-1 rounded-full mr-4"
-                        style={{ backgroundColor: '#0C0C0C' }}
-                      ></div>
+                    <li key={idx} className="flex items-center text-sm font-light text-white">
+                      <div className="w-1 h-1 rounded-full mr-4 bg-white"></div>
                       {feature}
                     </li>
                   ))}
