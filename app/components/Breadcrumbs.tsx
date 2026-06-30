@@ -6,8 +6,8 @@ import { usePathname } from 'next/navigation';
 const Breadcrumbs = () => {
   const pathname = usePathname();
 
-  // Don't create breadcrumbs on homepage
-  if (pathname === '/') {
+  // Don't create breadcrumbs on the cinematic full-bleed pages
+  if (pathname === '/' || pathname === '/about' || pathname === '/gallery') {
     return null;
   }
 

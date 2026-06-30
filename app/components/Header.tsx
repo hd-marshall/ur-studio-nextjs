@@ -2,14 +2,14 @@
 
 import { useEffect, useState } from "react"
 import { Menu, X } from "lucide-react"
-import { useRouter } from "next/navigation"
+import { useRouter, usePathname } from "next/navigation"
 
 const BOOKING_URL = "https://www.fresha.com/a/ur-studio-melbourne-61a-peel-street-lmpkp2dv/booking?menu=true&multi=true&pId=1401362&cartId=a3f18a4e-a008-4a7e-995c-bd998ed45476"
 
 const navItems = [
   { name: "Home", href: "/" },
-  { name: "About", href: "#about" },
-  { name: "Gallery", href: "#gallery" },
+  { name: "About", href: "/about" },
+  { name: "Gallery", href: "/gallery" },
   { name: "Awards", href: "#awards" },
   { name: "Contact", href: "#contact" },
 ]
@@ -20,6 +20,14 @@ export default function Header() {
   const [menuVisible, setMenuVisible] = useState(false)
   const [scrollProgress, setScrollProgress] = useState(0)
   const router = useRouter()
+  const pathname = usePathname()
+
+  // Pages with a full-bleed hero behind the nav start transparent and fade the
+  // grey in on scroll (homepage, gallery); every other page keeps the grey solid
+  // from the top so the nav stays legible without a hero behind it.
+  const heroNavPages = ["/", "/gallery"]
+  const solidNav = !heroNavPages.includes(pathname)
+  const navProgress = solidNav ? 1 : scrollProgress
 
   useEffect(() => {
     // Fades in continuously over the first 100px of scroll instead of
@@ -64,7 +72,7 @@ export default function Header() {
   return (
     <header
       className="fixed top-0 left-0 right-0 z-50"
-      style={{ backgroundColor: `rgb(var(--grey) / ${scrollProgress})` }}
+      style={{ backgroundColor: `rgb(var(--grey) / ${navProgress})` }}
     >
       <div className="w-full px-6 lg:px-12 py-4 lg:py-5">
 
@@ -110,7 +118,7 @@ export default function Header() {
               onClick={() => window.open(BOOKING_URL, "_blank")}
               className="border border-white text-white px-6 py-2 text-xs font-oswald font-semibold tracking-[0.2em] uppercase hover:bg-white hover:text-black transition-colors duration-200"
             >
-              BOOK
+              BOOK NOW
             </button>
           </div>
         </div>
