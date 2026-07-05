@@ -1,9 +1,17 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { MapPin, Phone, Mail, Clock } from "lucide-react"
+import { MapPin, Instagram, Mail, Clock } from "lucide-react"
 
 const contactInfo = [
+  {
+    icon: <Instagram className="h-6 w-6" />,
+    title: "Instagram",
+    details: ["@urstudio.au", "See our latest work"],
+    href: "https://www.instagram.com/urstudio.au?igsh=MXBoanY0Y2FjamJzbA==",
+    clickable: true,
+    external: true,
+  },
   {
     icon: <Clock className="h-6 w-6" />,
     title: "Hours",
@@ -13,13 +21,6 @@ const contactInfo = [
     icon: <MapPin className="h-6 w-6" />,
     title: "Location",
     details: ["61A Peel Street", "Melbourne CBD", "Victoria 3003"],
-  },
-  {
-    icon: <Phone className="h-6 w-6" />,
-    title: "Contact",
-    details: ["0435 342 989", "Available during working hours."],
-    href: "tel:0435342989",
-    clickable: true,
   },
   {
     icon: <Mail className="h-6 w-6" />,
@@ -73,7 +74,11 @@ function ContactCard({ info, animationIndex, inView }: ContactCardProps) {
   const wrapperClassName = "w-72 flex-shrink-0 snap-start lg:w-auto lg:flex-1 lg:flex-shrink"
 
   return info.clickable ? (
-    <a href={info.href} className={`${wrapperClassName} transition-opacity duration-300 hover:opacity-80`}>
+    <a
+      href={info.href}
+      {...(info.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+      className={`${wrapperClassName} transition-opacity duration-300 hover:opacity-80`}
+    >
       {cardContent}
     </a>
   ) : (

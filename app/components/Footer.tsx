@@ -1,6 +1,6 @@
 "use client"
 
-import { Instagram, Facebook, Twitter } from "lucide-react"
+import { Instagram } from "lucide-react"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 
@@ -61,12 +61,6 @@ export default function Footer() {
               <button onClick={() => window.open('https://www.instagram.com/urstudio.au?igsh=MXBoanY0Y2FjamJzbA==', '_blank')}>
                 <Instagram className="h-5 w-5 text-white/60 hover:text-white cursor-pointer transition-colors" />
               </button>
-              <button onClick={() => window.open('https://facebook.com/', '_blank')}>
-                <Facebook className="h-5 w-5 text-white/60 hover:text-white cursor-pointer transition-colors" />
-              </button>
-              <button onClick={() => window.open('https://twitter.com/', '_blank')}>
-                <Twitter className="h-5 w-5 text-white/60 hover:text-white cursor-pointer transition-colors" />
-              </button>
             </div>
           </div>
 
@@ -76,14 +70,6 @@ export default function Footer() {
             <ul className="space-y-3 text-white/60 font-light">
               <li>
                 <button 
-                  onClick={() => scrollToSection('#services')}
-                  className="hover:text-white cursor-pointer transition-colors text-left"
-                >
-                  Services
-                </button>
-              </li>
-              <li>
-                <button 
                   onClick={() => scrollToSection('#gallery')}
                   className="hover:text-white cursor-pointer transition-colors text-left"
                 >
@@ -91,19 +77,11 @@ export default function Footer() {
                 </button>
               </li>
               <li>
-                <button 
-                  onClick={() => scrollToSection('#about')}
+                <button
+                  onClick={() => handlePageNavigation('/about')}
                   className="hover:text-white cursor-pointer transition-colors text-left"
                 >
                   About
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => scrollToSection('#awards')}
-                  className="hover:text-white cursor-pointer transition-colors text-left"
-                >
-                  Awards
                 </button>
               </li>
               <li>
@@ -175,14 +153,8 @@ export default function Footer() {
                 <p>61A Peel Street</p>
                 <p>West Melbourne, VIC 3003</p>
               </button>
-              <a 
-                href="tel:0435 342 989" 
-                className="hover:text-white cursor-pointer transition-colors block"
-              >
-                0435 342 989
-              </a>
-              <a 
-                href="mailto:urstudiomelb@gmail.com" 
+              <a
+                href="mailto:urstudiomelb@gmail.com"
                 className="hover:text-white cursor-pointer transition-colors block"
               >
                 urstudiomelb@gmail.com
