@@ -4,7 +4,7 @@ import { Instagram } from "lucide-react"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 
-const logoImagePath = "/logo/logo-svg.svg"
+const logoImagePath = "/logo/logo-white.png"
 
 export default function Footer() {
   const router = useRouter()
@@ -51,7 +51,7 @@ export default function Footer() {
                 alt="UR Studio Logo"
                 width={120}
                 height={120}
-                className="w-20 h-20 object-contain filter invert"
+                className="w-20 h-20 object-contain"
               />
             </button>
             <p className="text-white/60 leading-relaxed font-light">
