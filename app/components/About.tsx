@@ -42,7 +42,7 @@ const BARBERS: Barber[] = [
     image: "/images/about/bendon-headshot.jpeg",
     alt: "Brendon (Ben) Heung",
     paragraphs: [
-      "I'm Brendon (Ben) Heung, member of UR Studio. Born and raised in Melbourne, I'm inspired by the city and the creatives around me.",
+      "I'm Bendon (Ben) Heung, member of UR Studio. Born and raised in Melbourne, I'm inspired by the city and the creatives around me.",
       "In 2022 I fell for the blend of creativity and craftsmanship in barbering, and it quickly became second nature. As a UR barber, I aim to create a space where you can freely express yourself and feel comfortable in my chair.",
       "Every cut is approached with intent — tailored to reflect your identity.",
     ],
