@@ -55,7 +55,7 @@ export default function Footer() {
               />
             </button>
             <p className="text-white/60 leading-relaxed font-light">
-              Where traditional craftsmanship meets contemporary sophistication in the heart of Melbourne.
+              Haircuts For You.
             </p>
           </div>
 
