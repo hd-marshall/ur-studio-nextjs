@@ -5,8 +5,25 @@
 // so the homepage stays fresh as new posts go up, with a local-image fallback so
 // the section never breaks if the feed is unavailable.
 
-// UR Studio's Behold feed (public JSON endpoint). Overridable via BEHOLD_FEED_URL.
+// Behold's feed endpoint is a PUBLIC URL (Behold serves it to browsers too), so
+// it is not a secret. We ship a working default so the gallery just works with no
+// setup, and allow BEHOLD_FEED_URL to override it per-environment (e.g. to swap
+// feeds without a code change). Whatever it resolves to is validated — https and
+// pinned to the Behold host — so a misconfigured or hostile value can never point
+// the server-side fetch at an arbitrary host.
+const BEHOLD_HOST = "feeds.behold.so"
 const DEFAULT_FEED_URL = "https://feeds.behold.so/BkaLzMvDcSvv14bStzW0"
+
+function resolveFeedUrl(): string | null {
+  const raw = process.env.BEHOLD_FEED_URL || DEFAULT_FEED_URL
+  try {
+    const url = new URL(raw)
+    if (url.protocol !== "https:" || url.hostname !== BEHOLD_HOST) return null
+    return url.toString()
+  } catch {
+    return null
+  }
+}
 
 export type GalleryPost = {
   src: string
@@ -70,9 +87,14 @@ function normalize(post: BeholdPost): GalleryPost | null {
 }
 
 export async function getInstagramPosts(limit = 6): Promise<GalleryPost[]> {
-  const feedUrl = process.env.BEHOLD_FEED_URL || DEFAULT_FEED_URL
+  const feedUrl = resolveFeedUrl()
 
-  if (!feedUrl) return FALLBACK_POSTS.slice(0, limit)
+  if (!feedUrl) {
+    if (process.env.NODE_ENV !== "production") {
+      console.warn("[instagram] BEHOLD_FEED_URL is invalid — using fallback images.")
+    }
+    return FALLBACK_POSTS.slice(0, limit)
+  }
 
   try {
     const res = await fetch(feedUrl, { next: { revalidate: 3600 } })
