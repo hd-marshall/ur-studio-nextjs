@@ -57,11 +57,6 @@ export default function Footer() {
             <p className="text-white/60 leading-relaxed font-light">
               Where traditional craftsmanship meets contemporary sophistication in the heart of Melbourne.
             </p>
-            <div className="flex space-x-4 justify-center md:justify-start">
-              <button onClick={() => window.open('https://www.instagram.com/urstudio.au?igsh=MXBoanY0Y2FjamJzbA==', '_blank')}>
-                <Instagram className="h-5 w-5 text-white/60 hover:text-white cursor-pointer transition-colors" />
-              </button>
-            </div>
           </div>
 
           {/* Links */}

@@ -124,7 +124,7 @@ export default function Contact() {
   }, [])
 
   return (
-    <section id="contact" ref={sectionRef} className="bg-grey pt-12 pb-8">
+    <section id="contact" ref={sectionRef} className="bg-grey pt-10 pb-8">
       <div className="container mx-auto px-6">
         <div className="text-center mb-10">
           <h2 className="text-5xl font-bold text-white mb-4 [text-shadow:0_2px_10px_rgb(var(--grey)/0.85)]">WEST MELBOURNE</h2>

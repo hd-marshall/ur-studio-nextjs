@@ -5,10 +5,17 @@
 // so the homepage stays fresh as new posts go up, with a local-image fallback so
 // the section never breaks if the feed is unavailable.
 
+// UR Studio's Behold feed (public JSON endpoint). Overridable via BEHOLD_FEED_URL.
+const DEFAULT_FEED_URL = "https://feeds.behold.so/BkaLzMvDcSvv14bStzW0"
+
 export type GalleryPost = {
   src: string
   permalink?: string
   alt: string
+  /** True for reels/video posts. */
+  isVideo?: boolean
+  /** Playable .mp4 (Instagram CDN) for video posts — used for hover-to-play. */
+  videoUrl?: string
 }
 
 // Offline fallback — the original hardcoded gallery images (kept in public/).
@@ -51,15 +58,19 @@ function normalize(post: BeholdPost): GalleryPost | null {
 
   if (!src) return null
 
+  const isVideo = post.mediaType === "VIDEO"
+
   return {
     src,
     permalink: post.permalink,
     alt: post.caption ? post.caption.slice(0, 100) : "",
+    isVideo,
+    videoUrl: isVideo ? post.mediaUrl : undefined,
   }
 }
 
 export async function getInstagramPosts(limit = 6): Promise<GalleryPost[]> {
-  const feedUrl = process.env.BEHOLD_FEED_URL
+  const feedUrl = process.env.BEHOLD_FEED_URL || DEFAULT_FEED_URL
 
   if (!feedUrl) return FALLBACK_POSTS.slice(0, limit)
 
