@@ -37,9 +37,9 @@ const BARBERS: Barber[] = [
     ],
   },
   {
-    name: "Brendon Heung",
+    name: "Bendon Heung",
     eyebrow: "My Story",
-    image: "/images/about/bradon-headshot.jpeg",
+    image: "/images/about/bendon-headshot.jpeg",
     alt: "Brendon (Ben) Heung",
     paragraphs: [
       "I'm Brendon (Ben) Heung, member of UR Studio. Born and raised in Melbourne, I'm inspired by the city and the creatives around me.",
