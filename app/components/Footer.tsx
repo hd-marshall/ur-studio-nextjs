@@ -149,10 +149,10 @@ export default function Footer() {
                 <p>West Melbourne, VIC 3003</p>
               </button>
               <a
-                href="mailto:urstudiomelb@gmail.com"
+                href="mailto:team@urstudio.com.au"
                 className="hover:text-white cursor-pointer transition-colors block"
               >
-                urstudiomelb@gmail.com
+                team@urstudio.com.au
               </a>
             </div>
           </div>

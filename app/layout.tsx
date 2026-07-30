@@ -103,7 +103,7 @@ export default function RootLayout({
                 'addressCountry': 'AU'
               },
               'telephone': '0447607947',
-              'email': 'urstudiomelb@gmail.com',
+              'email': 'team@urstudio.com.au',
               'url': 'https://www.urstudio.com.au/',
               'image': [
                 'https://www.urstudio.com.au/favicon-96x96.png',

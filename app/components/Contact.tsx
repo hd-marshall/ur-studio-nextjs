@@ -25,8 +25,8 @@ const contactInfo = [
   {
     icon: <Mail className="h-6 w-6" />,
     title: "Email",
-    details: ["urstudiomelb@gmail.com", "Response within 6 hours"],
-    href: "mailto:urstudiomelb@gmail.com",
+    details: ["team@urstudio.com.au", "Response within 6 hours"],
+    href: "mailto:team@urstudio.com.au",
     clickable: true,
   },
 ]

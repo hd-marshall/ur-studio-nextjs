@@ -108,10 +108,10 @@ export default function BookingPolicy() {
           <div className="space-y-2">
             <p>
               <a 
-                href="mailto:urstudiomelb@gmail.com" 
+                href="mailto:team@urstudio.com.au" 
                 className="text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors font-light"
               >
-                urstudiomelb@gmail.com
+                team@urstudio.com.au
               </a>
             </p>
             <p>
