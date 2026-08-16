@@ -27,7 +27,7 @@ export default function BookingPolicy() {
                 </h2>
                 <p className="text-green-700 dark:text-green-300 text-md leading-relaxed">
                   <strong>Free cancellation</strong> is available as long as the appointment is cancelled{" "}
-                  <strong>at least 6 hours before</strong> the appointment.
+                  <strong>at least 12 hours before</strong> the appointment.
                 </p>
               </div>
             </div>
@@ -42,7 +42,7 @@ export default function BookingPolicy() {
                   Late Cancellations
                 </h2>
                 <p className="text-orange-700 dark:text-orange-300 text-md leading-relaxed">
-                  <strong>Late cancellations</strong> (within 6 hours of your booking) will incur a{" "}
+                  <strong>Late cancellations</strong> (within 12 hours of your booking) will incur a{" "}
                   <strong>100% fee</strong> of service booked.
                 </p>
               </div>
